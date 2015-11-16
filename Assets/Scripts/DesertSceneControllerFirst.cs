@@ -42,7 +42,7 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 				currentPosition = 0;
 			}
 
-			martianSphereMovements.AnimateTo (spherePositions [currentPosition], movingSpeed);
+			martianSphereMovements.animateTo (spherePositions [currentPosition], movingSpeed);
 		}
 	}
 

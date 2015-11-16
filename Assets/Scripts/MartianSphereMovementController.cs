@@ -14,13 +14,15 @@ public class MartianSphereMovementController : MonoBehaviour {
 	private float movingEnd = 0.0f;
 
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+
+	}
 	
 	// Update is called once per frame
 	void Update () {
 		// Handles moving the sphere around
 		if (isMoving()) {
-			MoveTo(
+			this.moveTo(
 				movingCurveX.Evaluate(Time.time),
 				movingCurveY.Evaluate(Time.time),
 				movingCurveZ.Evaluate(Time.time)
@@ -33,7 +35,7 @@ public class MartianSphereMovementController : MonoBehaviour {
 	 * //Takes care that the destination is not under the terrain
 	 * speed : meters per seconds
 	 */
-	public void AnimateTo (float destinationX, float destinationY, float destinationZ, float speed) {
+	public void animateTo (float destinationX, float destinationY, float destinationZ, float speed) {
 		Vector3 destination = new Vector3 (destinationX, destinationY, destinationZ);
 
 		// Checks that the destination point is above the terrain
@@ -72,15 +74,15 @@ public class MartianSphereMovementController : MonoBehaviour {
 		);
 	}
 
-	public void AnimateTo(Vector3 destination, float speed) {
-		AnimateTo (destination.x, destination.y, destination.z, speed);
+	public void animateTo(Vector3 destination, float speed) {
+		animateTo (destination.x, destination.y, destination.z, speed);
 	}
 
 	/**
 	 * Moves the object to a position
 	 * Takes care not to position it under the terrain
 	 */
-	void MoveTo (float destinationX, float destinationY, float destinationZ) {
+	public void moveTo (float destinationX, float destinationY, float destinationZ) {
 		Vector3 destination = new Vector3 (destinationX, destinationY, destinationZ);
 
 		// Checks that the destination point is above the terrain

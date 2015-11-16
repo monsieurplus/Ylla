@@ -20,17 +20,17 @@ public class DetectInteractibles : MonoBehaviour {
         //casts a ray to test for presence of an object in front of the camera. Ray has range of 1.
         RaycastHit hit;
 
-        Debug.DrawLine(cam.transform.position + cam.transform.forward, cam.transform.position + cam.transform.forward + cam.transform.forward, Color.red);
+        //Debug.DrawLine(cam.transform.position + cam.transform.forward, cam.transform.position + cam.transform.forward + cam.transform.forward, Color.red);
 
         
         if (Physics.Raycast(cam.transform.position + cam.transform.forward, cam.transform.forward, out hit, 1f) ) {
 
             //if ray sucessfully hits something, it can cause a reaction if it is an interactible object
-            ShineOnLookScript objectShineScript;
-            if ( (objectShineScript = hit.collider.GetComponent<ShineOnLookScript>() ) != null )
+			ShineOnLookScript objectShineScript = hit.collider.GetComponent<ShineOnLookScript>();
+			if (hit.collider.name != "FPSController" && objectShineScript != null )
             {
                 //If object is different, start shine on that object. Mark it as last object highlighted
-                if ( hit.collider.name != previousColliderName) {
+                if (hit.collider.name != previousColliderName) {
                     objectShineScript.ActivateShine();
                     previousColliderName = hit.collider.name;
                     prevObjectShineScript = objectShineScript;
