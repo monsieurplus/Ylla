@@ -25,9 +25,9 @@ public class PlayerTriggers : MonoBehaviour {
     //--------------------------------------------------
     //ONLY FOR TEST PURPOSES
     //--------------------------------------------------
-    void Start() { 
+    /*void Start() { 
         UIScript.startQuickLinesLoop(SoundPlayer, YllaRespawnLines);
-    }
+    }*/
     //--------------------------------------------------
     //ONLY FOR TEST PURPOSES
     //--------------------------------------------------

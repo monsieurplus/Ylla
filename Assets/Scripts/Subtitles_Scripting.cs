@@ -31,8 +31,20 @@ public class Subtitles_Scripting : MonoBehaviour {
 		captions["desertScene01_dialog06"] = "Non non non, ce n’est pas ça du tout.";
 		captions["desertScene01_dialog07"] = "Sa voix… sa voix était douce, il me faisait rire.";
 		captions["desertScene01_dialog08"] = "Rien à voir avec la vôtre, c’est le moins que l’on puisse dire.";
-		captions["desertScene01_dialog09"] = "Bon! Puisque vous n’êtes pas lui, vous ne m’êtes d’aucune utilité.";
+		captions["desertScene01_dialog09"] = "Bon ! Puisque vous n’êtes pas lui, vous ne m’êtes d’aucune utilité.";
 		captions["desertScene01_dialog10"] = "Maintenant, laissez-moi tranquille. Et bonne journée.";
+
+		captions["desertScene02_dialog01"] = "Encore vous ?!!";
+		captions["desertScene02_dialog02"] = "Mais ça ne va pas, ça ! Ça ne va pas du tout !";
+		captions["desertScene02_dialog03"] = "C’est notre chanson à NOUS ! Elle ne devrait pas vous faire venir VOUS !";
+		captions["desertScene02_dialog04"] = "Fichez moi la paix ! Bonne journée !";
+
+		captions["desertScene03_dialog01"] = "Je ne le trouverais pas... Cela fait si longtemps que je le cherche, que j’essaie de comprendre...";
+		captions["desertScene03_dialog02"] = "Je suis pourtant certaine qu’il était ici, les images, les sons, sa voix, tout pointait vers cet endroit…. Alors pourquoi ?";
+		captions["desertScene03_dialog03"] = "Qu’a-t-il bien pu se passer ? J’ai besoin de réponses. Je tourne en rond sur cette histoire depuis si longtemps...";
+		captions["desertScene03_dialog04"] = "Oh... Vous voilà encore ?";
+		captions["desertScene03_dialog05"] = "Notre chanson semble vous attirer. Vous êtes de toute évidence de la troisième planète vous aussi... Ça ne peut pas être entièrement une coïncidence.";
+		captions["desertScene03_dialog06"] = "Suivez moi, j’ai quelque chose à vous montrer.";
 	}
 	
 	// Function to display the proper text in this subtitle box. Name of Audioclip is used as search key.

@@ -13,8 +13,6 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	public AudioSource martianTelepathy;
 	private MartianSphereMovementController martianSphereMovements;
 
-
-
 	public GameObject player;
 	public GameObject character;
 
@@ -24,8 +22,6 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	private Vector3[] spherePositions = new Vector3[9];
 
 	private int currentPosition = 0;
-
-	private bool cameraIsRotating = false;
 
 	private int currentMartianDialog = 0;
 	[SerializeField] AudioClip[] martianDialogs;
@@ -46,7 +42,8 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	// Minimum distance to trigger the sphere dialog scene 
 	private float minDistanceSphereFromPlayer = 3.0f;
 	private float lookRotationSpeed = 5.0f;
-	private Quaternion lookRotationThreshold = new Quaternion(0.1f, 0.1f, 0.1f, 0.1f);
+
+	public GameObject nextSceneController;
 
 	// Use this for initialization
 	private void Start () {
@@ -129,6 +126,8 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	}
 
 	private void phaseRotateCamera() {
+		// TODO fadeout spatialized sound
+
 		// Make the player look at the sphere
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		
@@ -136,7 +135,6 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 		camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
 
 		// If the remaining angle is little, we change phase
-
 		float deltaAngle = Quaternion.Angle(camera.transform.rotation, lookRotation);
 		if (deltaAngle < 1.0f) {
 			currentPhase = "dialog01";
@@ -183,8 +181,12 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 		if (!martianTelepathy.isPlaying) {
 			
 			if (currentMartianDialog >= 10 || currentMartianDialog >= martianDialogs.Length) {
-				currentPhase = "waitingForPlayer";
-				// TODO Launch next Scene
+				// Stop current scene / Launch next Scene
+				sceneFinished = true;
+				nextSceneController.GetComponent<DesertSceneControllerSecond>().sceneStarted = true;
+
+				// Unlock the player's controls
+				player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
 			}
 			else {
 				// Use the GUI to play a sound and display subtitles
@@ -195,45 +197,4 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 			}
 		}
 	}
-
-	/*
-	// Check the distance between the sphere and the player
-	if (getDistanceFromPlayer () <= 3) {
-		martianSphereMovements.stopMoving ();
-
-		//if (cameraIsRotating == false) {
-
-			// Lock player's movements
-			player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
-			
-			// Make the player look at the sphere
-			Camera camera = character.gameObject.GetComponent<Camera>();
-
-			var rotation = Quaternion.LookRotation(martianSphere.transform.position - camera.transform.position);
-			camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, rotation, Time.deltaTime * 5.0f);
-			cameraIsRotating = true;
-
-			//var rotation = Quaternion.LookRotation(target.position - transform.position);
-			//transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
-		//}
-		//else {
-			// LookAt
-			//camera.transform.LookAt (martianSphere.transform.position);
-		//}
-		// TODO Launch Dialogue phase
-
-
-	}
-	
-	// Check that the sphere is not moving and that it has made a pause
-	else if (!martianSphereMovements.isMoving () && (Time.time - martianSphereMovements.getMovingEnd ()) > spherePauseDuration) {
-		// Moving the sphere to the next position
-		currentPosition++;
-		if (currentPosition >= spherePositions.Length) {
-			currentPosition = 0;
-		}
-		
-		martianSphereMovements.animateTo (spherePositions [currentPosition], sphereMovingSpeed);
-	}
- 	*/
 }

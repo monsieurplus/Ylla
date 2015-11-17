@@ -1,0 +1,1305 @@
+fileFormatVersion: 2
+guid: 8c45e0499540741a692e426fdc13ff0d
+timeCreated: 1447775461
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: desert 2.002
+    100002: desert 2.003
+    100004: desert 2.004
+    100006: desert 2.005
+    100008: desert 2.006
+    100010: desert 2.007
+    100012: desert 2.008
+    100014: desert 2.009
+    100016: desert 2.010
+    100018: desert 2.011
+    100020: desert 2.012
+    100022: desert 2.013
+    100024: desert 2.014
+    100026: desert 2.015
+    100028: desert 2.016
+    100030: desert 2.017
+    100032: desert 2.018
+    100034: desert 2.019
+    100036: desert 2.020
+    100038: desert 2.021
+    100040: desert 2.022
+    100042: desert 2.023
+    100044: desert 2.024
+    100046: desert 2.025
+    100048: desert 2.026
+    100050: desert 2.027
+    100052: desert 2.028
+    100054: desert 2.029
+    100056: desert 2.030
+    100058: desert 2.031
+    100060: desert 2.032
+    100062: desert 2.033
+    100064: desert 2.034
+    100066: desert 2.035
+    100068: desert 2.036
+    100070: desert 2.037
+    100072: desert 2.038
+    100074: desert 2.039
+    100076: desert 2.040
+    100078: desert 2.041
+    100080: desert 2.042
+    100082: desert 2.043
+    100084: desert 2.044
+    100086: desert 2.045
+    100088: desert 2.046
+    100090: desert 2.047
+    100092: desert 2.048
+    100094: desert 2.049
+    100096: desert 2.050
+    100098: desert 2.051
+    100100: desert 2.052
+    100102: desert 2.053
+    100104: desert 2.054
+    100106: desert 2.055
+    100108: desert 2.056
+    100110: desert 2.057
+    100112: desert 2.058
+    100114: desert 2.059
+    100116: desert 2.060
+    100118: desert 2.061
+    100120: desert 2.062
+    100122: desert 2.063
+    100124: desert 2.064
+    100126: desert 2.065
+    100128: desert 2.066
+    100130: desert 2.067
+    100132: desert 2.068
+    100134: desert 2.069
+    100136: desert 2.070
+    100138: desert 2.071
+    100140: desert 2.072
+    100142: desert 2.073
+    100144: desert 2.074
+    100146: desert 2.075
+    100148: desert 2.076
+    100150: desert 2.077
+    100152: desert 2.078
+    100154: desert 2.079
+    100156: desert 2.080
+    100158: desert 2.081
+    100160: desert 2.082
+    100162: desert 2.083
+    100164: desert 2.084
+    100166: desert 2.085
+    100168: desert 2.086
+    100170: desert 2.087
+    100172: desert 2.088
+    100174: desert 2.089
+    100176: desert 2.090
+    100178: desert 2.091
+    100180: desert 2.092
+    100182: desert 2.093
+    100184: desert 2.094
+    100186: desert 2.095
+    100188: desert 2.096
+    100190: desert 2.097
+    100192: desert 2.098
+    100194: desert 2.099
+    100196: desert 2.1
+    100198: desert 2.100
+    100200: desert 2.101
+    100202: desert 2.102
+    100204: desert 2.103
+    100206: desert 2.104
+    100208: desert 2.105
+    100210: desert 2.106
+    100212: desert 2.107
+    100214: desert 2.108
+    100216: desert 2.109
+    100218: desert 2.110
+    100220: desert 2.111
+    100222: desert 2.112
+    100224: desert 2.113
+    100226: desert 2.114
+    100228: desert 2.115
+    100230: desert 2.116
+    100232: desert 2.117
+    100234: desert 2.118
+    100236: desert 2.119
+    100238: desert 2.120
+    100240: desert 3.001
+    100242: desert 3.002
+    100244: desert 3.003
+    100246: desert 3.004
+    100248: desert 3.005
+    100250: desert 3.006
+    100252: desert 3.007
+    100254: desert 3.008
+    100256: desert 3.009
+    100258: desert 3.010
+    100260: desert 3.011
+    100262: desert 3.012
+    100264: desert 3.013
+    100266: desert 3.014
+    100268: desert 3.015
+    100270: desert 3.016
+    100272: desert 3.017
+    100274: desert 3.018
+    100276: desert 3.019
+    100278: desert 3.020
+    100280: desert 3.021
+    100282: desert 3.022
+    100284: desert 3.023
+    100286: desert 3.024
+    100288: desert 3.025
+    100290: desert 3.026
+    100292: desert 3.027
+    100294: desert 3.028
+    100296: //RootNode
+    100298: "d\xE9sert002"
+    100300: "d\xE9sert003"
+    100302: "d\xE9sert004"
+    100304: "d\xE9sert005"
+    100306: "d\xE9sert006"
+    100308: "d\xE9sert007"
+    100310: "d\xE9sert008"
+    100312: "d\xE9sert009"
+    100314: "d\xE9sert01"
+    100316: "d\xE9sert010"
+    100318: "d\xE9sert011"
+    100320: "d\xE9sert012"
+    100322: "d\xE9sert013"
+    100324: "d\xE9sert014"
+    100326: "d\xE9sert015"
+    100328: "d\xE9sert016"
+    100330: "d\xE9sert017"
+    100332: "d\xE9sert018"
+    100334: "d\xE9sert019"
+    100336: "d\xE9sert020"
+    100338: "d\xE9sert021"
+    100340: "d\xE9sert022"
+    100342: "d\xE9sert023"
+    100344: "d\xE9sert024"
+    100346: "d\xE9sert025"
+    100348: "d\xE9sert026"
+    100350: "d\xE9sert027"
+    100352: "d\xE9sert028"
+    100354: "d\xE9sert029"
+    100356: "d\xE9sert030"
+    100358: "d\xE9sert031"
+    100360: "d\xE9sert032"
+    100362: "d\xE9sert033"
+    100364: "d\xE9sert034"
+    100366: "d\xE9sert035"
+    100368: "d\xE9sert036"
+    100370: "d\xE9sert037"
+    100372: "d\xE9sert038"
+    100374: "d\xE9sert039"
+    100376: "d\xE9sert040"
+    100378: "d\xE9sert041"
+    100380: "d\xE9sert042"
+    100382: "d\xE9sert043"
+    100384: "d\xE9sert044"
+    100386: "d\xE9sert045"
+    100388: "d\xE9sert046"
+    100390: "d\xE9sert047"
+    100392: "d\xE9sert048"
+    100394: "d\xE9sert049"
+    100396: "d\xE9sert050"
+    100398: "d\xE9sert051"
+    100400: "d\xE9sert052"
+    100402: "d\xE9sert053"
+    100404: "d\xE9sert054"
+    100406: "d\xE9sert055"
+    100408: "d\xE9sert056"
+    100410: "d\xE9sert057"
+    100412: "d\xE9sert058"
+    100414: "d\xE9sert059"
+    100416: "d\xE9sert060"
+    100418: "d\xE9sert061"
+    100420: "d\xE9sert062"
+    100422: "d\xE9sert063"
+    100424: "d\xE9sert064"
+    100426: "d\xE9sert065"
+    100428: "d\xE9sert066"
+    100430: "d\xE9sert067"
+    100432: "d\xE9sert068"
+    100434: "d\xE9sert069"
+    100436: "d\xE9sert070"
+    100438: "d\xE9sert071"
+    100440: "d\xE9sert072"
+    100442: "d\xE9sert073"
+    100444: "d\xE9sert074"
+    100446: "d\xE9sert075"
+    100448: "d\xE9sert076"
+    100450: "d\xE9sert077"
+    100452: "d\xE9sert078"
+    100454: "d\xE9sert079"
+    100456: "d\xE9sert080"
+    100458: "d\xE9sert081"
+    100460: "d\xE9sert082"
+    100462: "d\xE9sert083"
+    100464: "d\xE9sert084"
+    100466: "d\xE9sert085"
+    100468: "d\xE9sert086"
+    100470: "d\xE9sert087"
+    100472: "d\xE9sert088"
+    100474: "d\xE9sert089"
+    100476: "d\xE9sert090"
+    100478: "d\xE9sert091"
+    100480: "d\xE9sert092"
+    100482: "d\xE9sert093"
+    100484: "d\xE9sert094"
+    100486: "d\xE9sert095"
+    100488: "d\xE9sert096"
+    100490: "d\xE9sert097"
+    100492: "d\xE9sert098"
+    400000: desert 2.002
+    400002: desert 2.003
+    400004: desert 2.004
+    400006: desert 2.005
+    400008: desert 2.006
+    400010: desert 2.007
+    400012: desert 2.008
+    400014: desert 2.009
+    400016: desert 2.010
+    400018: desert 2.011
+    400020: desert 2.012
+    400022: desert 2.013
+    400024: desert 2.014
+    400026: desert 2.015
+    400028: desert 2.016
+    400030: desert 2.017
+    400032: desert 2.018
+    400034: desert 2.019
+    400036: desert 2.020
+    400038: desert 2.021
+    400040: desert 2.022
+    400042: desert 2.023
+    400044: desert 2.024
+    400046: desert 2.025
+    400048: desert 2.026
+    400050: desert 2.027
+    400052: desert 2.028
+    400054: desert 2.029
+    400056: desert 2.030
+    400058: desert 2.031
+    400060: desert 2.032
+    400062: desert 2.033
+    400064: desert 2.034
+    400066: desert 2.035
+    400068: desert 2.036
+    400070: desert 2.037
+    400072: desert 2.038
+    400074: desert 2.039
+    400076: desert 2.040
+    400078: desert 2.041
+    400080: desert 2.042
+    400082: desert 2.043
+    400084: desert 2.044
+    400086: desert 2.045
+    400088: desert 2.046
+    400090: desert 2.047
+    400092: desert 2.048
+    400094: desert 2.049
+    400096: desert 2.050
+    400098: desert 2.051
+    400100: desert 2.052
+    400102: desert 2.053
+    400104: desert 2.054
+    400106: desert 2.055
+    400108: desert 2.056
+    400110: desert 2.057
+    400112: desert 2.058
+    400114: desert 2.059
+    400116: desert 2.060
+    400118: desert 2.061
+    400120: desert 2.062
+    400122: desert 2.063
+    400124: desert 2.064
+    400126: desert 2.065
+    400128: desert 2.066
+    400130: desert 2.067
+    400132: desert 2.068
+    400134: desert 2.069
+    400136: desert 2.070
+    400138: desert 2.071
+    400140: desert 2.072
+    400142: desert 2.073
+    400144: desert 2.074
+    400146: desert 2.075
+    400148: desert 2.076
+    400150: desert 2.077
+    400152: desert 2.078
+    400154: desert 2.079
+    400156: desert 2.080
+    400158: desert 2.081
+    400160: desert 2.082
+    400162: desert 2.083
+    400164: desert 2.084
+    400166: desert 2.085
+    400168: desert 2.086
+    400170: desert 2.087
+    400172: desert 2.088
+    400174: desert 2.089
+    400176: desert 2.090
+    400178: desert 2.091
+    400180: desert 2.092
+    400182: desert 2.093
+    400184: desert 2.094
+    400186: desert 2.095
+    400188: desert 2.096
+    400190: desert 2.097
+    400192: desert 2.098
+    400194: desert 2.099
+    400196: desert 2.1
+    400198: desert 2.100
+    400200: desert 2.101
+    400202: desert 2.102
+    400204: desert 2.103
+    400206: desert 2.104
+    400208: desert 2.105
+    400210: desert 2.106
+    400212: desert 2.107
+    400214: desert 2.108
+    400216: desert 2.109
+    400218: desert 2.110
+    400220: desert 2.111
+    400222: desert 2.112
+    400224: desert 2.113
+    400226: desert 2.114
+    400228: desert 2.115
+    400230: desert 2.116
+    400232: desert 2.117
+    400234: desert 2.118
+    400236: desert 2.119
+    400238: desert 2.120
+    400240: desert 3.001
+    400242: desert 3.002
+    400244: desert 3.003
+    400246: desert 3.004
+    400248: desert 3.005
+    400250: desert 3.006
+    400252: desert 3.007
+    400254: desert 3.008
+    400256: desert 3.009
+    400258: desert 3.010
+    400260: desert 3.011
+    400262: desert 3.012
+    400264: desert 3.013
+    400266: desert 3.014
+    400268: desert 3.015
+    400270: desert 3.016
+    400272: desert 3.017
+    400274: desert 3.018
+    400276: desert 3.019
+    400278: desert 3.020
+    400280: desert 3.021
+    400282: desert 3.022
+    400284: desert 3.023
+    400286: desert 3.024
+    400288: desert 3.025
+    400290: desert 3.026
+    400292: desert 3.027
+    400294: desert 3.028
+    400296: //RootNode
+    400298: "d\xE9sert002"
+    400300: "d\xE9sert003"
+    400302: "d\xE9sert004"
+    400304: "d\xE9sert005"
+    400306: "d\xE9sert006"
+    400308: "d\xE9sert007"
+    400310: "d\xE9sert008"
+    400312: "d\xE9sert009"
+    400314: "d\xE9sert01"
+    400316: "d\xE9sert010"
+    400318: "d\xE9sert011"
+    400320: "d\xE9sert012"
+    400322: "d\xE9sert013"
+    400324: "d\xE9sert014"
+    400326: "d\xE9sert015"
+    400328: "d\xE9sert016"
+    400330: "d\xE9sert017"
+    400332: "d\xE9sert018"
+    400334: "d\xE9sert019"
+    400336: "d\xE9sert020"
+    400338: "d\xE9sert021"
+    400340: "d\xE9sert022"
+    400342: "d\xE9sert023"
+    400344: "d\xE9sert024"
+    400346: "d\xE9sert025"
+    400348: "d\xE9sert026"
+    400350: "d\xE9sert027"
+    400352: "d\xE9sert028"
+    400354: "d\xE9sert029"
+    400356: "d\xE9sert030"
+    400358: "d\xE9sert031"
+    400360: "d\xE9sert032"
+    400362: "d\xE9sert033"
+    400364: "d\xE9sert034"
+    400366: "d\xE9sert035"
+    400368: "d\xE9sert036"
+    400370: "d\xE9sert037"
+    400372: "d\xE9sert038"
+    400374: "d\xE9sert039"
+    400376: "d\xE9sert040"
+    400378: "d\xE9sert041"
+    400380: "d\xE9sert042"
+    400382: "d\xE9sert043"
+    400384: "d\xE9sert044"
+    400386: "d\xE9sert045"
+    400388: "d\xE9sert046"
+    400390: "d\xE9sert047"
+    400392: "d\xE9sert048"
+    400394: "d\xE9sert049"
+    400396: "d\xE9sert050"
+    400398: "d\xE9sert051"
+    400400: "d\xE9sert052"
+    400402: "d\xE9sert053"
+    400404: "d\xE9sert054"
+    400406: "d\xE9sert055"
+    400408: "d\xE9sert056"
+    400410: "d\xE9sert057"
+    400412: "d\xE9sert058"
+    400414: "d\xE9sert059"
+    400416: "d\xE9sert060"
+    400418: "d\xE9sert061"
+    400420: "d\xE9sert062"
+    400422: "d\xE9sert063"
+    400424: "d\xE9sert064"
+    400426: "d\xE9sert065"
+    400428: "d\xE9sert066"
+    400430: "d\xE9sert067"
+    400432: "d\xE9sert068"
+    400434: "d\xE9sert069"
+    400436: "d\xE9sert070"
+    400438: "d\xE9sert071"
+    400440: "d\xE9sert072"
+    400442: "d\xE9sert073"
+    400444: "d\xE9sert074"
+    400446: "d\xE9sert075"
+    400448: "d\xE9sert076"
+    400450: "d\xE9sert077"
+    400452: "d\xE9sert078"
+    400454: "d\xE9sert079"
+    400456: "d\xE9sert080"
+    400458: "d\xE9sert081"
+    400460: "d\xE9sert082"
+    400462: "d\xE9sert083"
+    400464: "d\xE9sert084"
+    400466: "d\xE9sert085"
+    400468: "d\xE9sert086"
+    400470: "d\xE9sert087"
+    400472: "d\xE9sert088"
+    400474: "d\xE9sert089"
+    400476: "d\xE9sert090"
+    400478: "d\xE9sert091"
+    400480: "d\xE9sert092"
+    400482: "d\xE9sert093"
+    400484: "d\xE9sert094"
+    400486: "d\xE9sert095"
+    400488: "d\xE9sert096"
+    400490: "d\xE9sert097"
+    400492: "d\xE9sert098"
+    2300000: desert 2.002
+    2300002: desert 2.003
+    2300004: desert 2.004
+    2300006: desert 2.005
+    2300008: desert 2.006
+    2300010: desert 2.007
+    2300012: desert 2.008
+    2300014: desert 2.009
+    2300016: desert 2.010
+    2300018: desert 2.011
+    2300020: desert 2.012
+    2300022: desert 2.013
+    2300024: desert 2.014
+    2300026: desert 2.015
+    2300028: desert 2.016
+    2300030: desert 2.017
+    2300032: desert 2.018
+    2300034: desert 2.019
+    2300036: desert 2.020
+    2300038: desert 2.021
+    2300040: desert 2.022
+    2300042: desert 2.023
+    2300044: desert 2.024
+    2300046: desert 2.025
+    2300048: desert 2.026
+    2300050: desert 2.027
+    2300052: desert 2.028
+    2300054: desert 2.029
+    2300056: desert 2.030
+    2300058: desert 2.031
+    2300060: desert 2.032
+    2300062: desert 2.033
+    2300064: desert 2.034
+    2300066: desert 2.035
+    2300068: desert 2.036
+    2300070: desert 2.037
+    2300072: desert 2.038
+    2300074: desert 2.039
+    2300076: desert 2.040
+    2300078: desert 2.041
+    2300080: desert 2.042
+    2300082: desert 2.043
+    2300084: desert 2.044
+    2300086: desert 2.045
+    2300088: desert 2.046
+    2300090: desert 2.047
+    2300092: desert 2.048
+    2300094: desert 2.049
+    2300096: desert 2.050
+    2300098: desert 2.051
+    2300100: desert 2.052
+    2300102: desert 2.053
+    2300104: desert 2.054
+    2300106: desert 2.055
+    2300108: desert 2.056
+    2300110: desert 2.057
+    2300112: desert 2.058
+    2300114: desert 2.059
+    2300116: desert 2.060
+    2300118: desert 2.061
+    2300120: desert 2.062
+    2300122: desert 2.063
+    2300124: desert 2.064
+    2300126: desert 2.065
+    2300128: desert 2.066
+    2300130: desert 2.067
+    2300132: desert 2.068
+    2300134: desert 2.069
+    2300136: desert 2.070
+    2300138: desert 2.071
+    2300140: desert 2.072
+    2300142: desert 2.073
+    2300144: desert 2.074
+    2300146: desert 2.075
+    2300148: desert 2.076
+    2300150: desert 2.077
+    2300152: desert 2.078
+    2300154: desert 2.079
+    2300156: desert 2.080
+    2300158: desert 2.081
+    2300160: desert 2.082
+    2300162: desert 2.083
+    2300164: desert 2.084
+    2300166: desert 2.085
+    2300168: desert 2.086
+    2300170: desert 2.087
+    2300172: desert 2.088
+    2300174: desert 2.089
+    2300176: desert 2.090
+    2300178: desert 2.091
+    2300180: desert 2.092
+    2300182: desert 2.093
+    2300184: desert 2.094
+    2300186: desert 2.095
+    2300188: desert 2.096
+    2300190: desert 2.097
+    2300192: desert 2.098
+    2300194: desert 2.099
+    2300196: desert 2.1
+    2300198: desert 2.100
+    2300200: desert 2.101
+    2300202: desert 2.102
+    2300204: desert 2.103
+    2300206: desert 2.104
+    2300208: desert 2.105
+    2300210: desert 2.106
+    2300212: desert 2.107
+    2300214: desert 2.108
+    2300216: desert 2.109
+    2300218: desert 2.110
+    2300220: desert 2.111
+    2300222: desert 2.112
+    2300224: desert 2.113
+    2300226: desert 2.114
+    2300228: desert 2.115
+    2300230: desert 2.116
+    2300232: desert 2.117
+    2300234: desert 2.118
+    2300236: desert 2.119
+    2300238: desert 2.120
+    2300240: desert 3.001
+    2300242: desert 3.002
+    2300244: desert 3.003
+    2300246: desert 3.004
+    2300248: desert 3.005
+    2300250: desert 3.006
+    2300252: desert 3.007
+    2300254: desert 3.008
+    2300256: desert 3.009
+    2300258: desert 3.010
+    2300260: desert 3.011
+    2300262: desert 3.012
+    2300264: desert 3.013
+    2300266: desert 3.014
+    2300268: desert 3.015
+    2300270: desert 3.016
+    2300272: desert 3.017
+    2300274: desert 3.018
+    2300276: desert 3.019
+    2300278: desert 3.020
+    2300280: desert 3.021
+    2300282: desert 3.022
+    2300284: desert 3.023
+    2300286: desert 3.024
+    2300288: desert 3.025
+    2300290: desert 3.026
+    2300292: desert 3.027
+    2300294: desert 3.028
+    2300296: "d\xE9sert002"
+    2300298: "d\xE9sert003"
+    2300300: "d\xE9sert004"
+    2300302: "d\xE9sert005"
+    2300304: "d\xE9sert006"
+    2300306: "d\xE9sert007"
+    2300308: "d\xE9sert008"
+    2300310: "d\xE9sert009"
+    2300312: "d\xE9sert01"
+    2300314: "d\xE9sert010"
+    2300316: "d\xE9sert011"
+    2300318: "d\xE9sert012"
+    2300320: "d\xE9sert013"
+    2300322: "d\xE9sert014"
+    2300324: "d\xE9sert015"
+    2300326: "d\xE9sert016"
+    2300328: "d\xE9sert017"
+    2300330: "d\xE9sert018"
+    2300332: "d\xE9sert019"
+    2300334: "d\xE9sert020"
+    2300336: "d\xE9sert021"
+    2300338: "d\xE9sert022"
+    2300340: "d\xE9sert023"
+    2300342: "d\xE9sert024"
+    2300344: "d\xE9sert025"
+    2300346: "d\xE9sert026"
+    2300348: "d\xE9sert027"
+    2300350: "d\xE9sert028"
+    2300352: "d\xE9sert029"
+    2300354: "d\xE9sert030"
+    2300356: "d\xE9sert031"
+    2300358: "d\xE9sert032"
+    2300360: "d\xE9sert033"
+    2300362: "d\xE9sert034"
+    2300364: "d\xE9sert035"
+    2300366: "d\xE9sert036"
+    2300368: "d\xE9sert037"
+    2300370: "d\xE9sert038"
+    2300372: "d\xE9sert039"
+    2300374: "d\xE9sert040"
+    2300376: "d\xE9sert041"
+    2300378: "d\xE9sert042"
+    2300380: "d\xE9sert043"
+    2300382: "d\xE9sert044"
+    2300384: "d\xE9sert045"
+    2300386: "d\xE9sert046"
+    2300388: "d\xE9sert047"
+    2300390: "d\xE9sert048"
+    2300392: "d\xE9sert049"
+    2300394: "d\xE9sert050"
+    2300396: "d\xE9sert051"
+    2300398: "d\xE9sert052"
+    2300400: "d\xE9sert053"
+    2300402: "d\xE9sert054"
+    2300404: "d\xE9sert055"
+    2300406: "d\xE9sert056"
+    2300408: "d\xE9sert057"
+    2300410: "d\xE9sert058"
+    2300412: "d\xE9sert059"
+    2300414: "d\xE9sert060"
+    2300416: "d\xE9sert061"
+    2300418: "d\xE9sert062"
+    2300420: "d\xE9sert063"
+    2300422: "d\xE9sert064"
+    2300424: "d\xE9sert065"
+    2300426: "d\xE9sert066"
+    2300428: "d\xE9sert067"
+    2300430: "d\xE9sert068"
+    2300432: "d\xE9sert069"
+    2300434: "d\xE9sert070"
+    2300436: "d\xE9sert071"
+    2300438: "d\xE9sert072"
+    2300440: "d\xE9sert073"
+    2300442: "d\xE9sert074"
+    2300444: "d\xE9sert075"
+    2300446: "d\xE9sert076"
+    2300448: "d\xE9sert077"
+    2300450: "d\xE9sert078"
+    2300452: "d\xE9sert079"
+    2300454: "d\xE9sert080"
+    2300456: "d\xE9sert081"
+    2300458: "d\xE9sert082"
+    2300460: "d\xE9sert083"
+    2300462: "d\xE9sert084"
+    2300464: "d\xE9sert085"
+    2300466: "d\xE9sert086"
+    2300468: "d\xE9sert087"
+    2300470: "d\xE9sert088"
+    2300472: "d\xE9sert089"
+    2300474: "d\xE9sert090"
+    2300476: "d\xE9sert091"
+    2300478: "d\xE9sert092"
+    2300480: "d\xE9sert093"
+    2300482: "d\xE9sert094"
+    2300484: "d\xE9sert095"
+    2300486: "d\xE9sert096"
+    2300488: "d\xE9sert097"
+    2300490: "d\xE9sert098"
+    3300000: desert 2.002
+    3300002: desert 2.003
+    3300004: desert 2.004
+    3300006: desert 2.005
+    3300008: desert 2.006
+    3300010: desert 2.007
+    3300012: desert 2.008
+    3300014: desert 2.009
+    3300016: desert 2.010
+    3300018: desert 2.011
+    3300020: desert 2.012
+    3300022: desert 2.013
+    3300024: desert 2.014
+    3300026: desert 2.015
+    3300028: desert 2.016
+    3300030: desert 2.017
+    3300032: desert 2.018
+    3300034: desert 2.019
+    3300036: desert 2.020
+    3300038: desert 2.021
+    3300040: desert 2.022
+    3300042: desert 2.023
+    3300044: desert 2.024
+    3300046: desert 2.025
+    3300048: desert 2.026
+    3300050: desert 2.027
+    3300052: desert 2.028
+    3300054: desert 2.029
+    3300056: desert 2.030
+    3300058: desert 2.031
+    3300060: desert 2.032
+    3300062: desert 2.033
+    3300064: desert 2.034
+    3300066: desert 2.035
+    3300068: desert 2.036
+    3300070: desert 2.037
+    3300072: desert 2.038
+    3300074: desert 2.039
+    3300076: desert 2.040
+    3300078: desert 2.041
+    3300080: desert 2.042
+    3300082: desert 2.043
+    3300084: desert 2.044
+    3300086: desert 2.045
+    3300088: desert 2.046
+    3300090: desert 2.047
+    3300092: desert 2.048
+    3300094: desert 2.049
+    3300096: desert 2.050
+    3300098: desert 2.051
+    3300100: desert 2.052
+    3300102: desert 2.053
+    3300104: desert 2.054
+    3300106: desert 2.055
+    3300108: desert 2.056
+    3300110: desert 2.057
+    3300112: desert 2.058
+    3300114: desert 2.059
+    3300116: desert 2.060
+    3300118: desert 2.061
+    3300120: desert 2.062
+    3300122: desert 2.063
+    3300124: desert 2.064
+    3300126: desert 2.065
+    3300128: desert 2.066
+    3300130: desert 2.067
+    3300132: desert 2.068
+    3300134: desert 2.069
+    3300136: desert 2.070
+    3300138: desert 2.071
+    3300140: desert 2.072
+    3300142: desert 2.073
+    3300144: desert 2.074
+    3300146: desert 2.075
+    3300148: desert 2.076
+    3300150: desert 2.077
+    3300152: desert 2.078
+    3300154: desert 2.079
+    3300156: desert 2.080
+    3300158: desert 2.081
+    3300160: desert 2.082
+    3300162: desert 2.083
+    3300164: desert 2.084
+    3300166: desert 2.085
+    3300168: desert 2.086
+    3300170: desert 2.087
+    3300172: desert 2.088
+    3300174: desert 2.089
+    3300176: desert 2.090
+    3300178: desert 2.091
+    3300180: desert 2.092
+    3300182: desert 2.093
+    3300184: desert 2.094
+    3300186: desert 2.095
+    3300188: desert 2.096
+    3300190: desert 2.097
+    3300192: desert 2.098
+    3300194: desert 2.099
+    3300196: desert 2.1
+    3300198: desert 2.100
+    3300200: desert 2.101
+    3300202: desert 2.102
+    3300204: desert 2.103
+    3300206: desert 2.104
+    3300208: desert 2.105
+    3300210: desert 2.106
+    3300212: desert 2.107
+    3300214: desert 2.108
+    3300216: desert 2.109
+    3300218: desert 2.110
+    3300220: desert 2.111
+    3300222: desert 2.112
+    3300224: desert 2.113
+    3300226: desert 2.114
+    3300228: desert 2.115
+    3300230: desert 2.116
+    3300232: desert 2.117
+    3300234: desert 2.118
+    3300236: desert 2.119
+    3300238: desert 2.120
+    3300240: desert 3.001
+    3300242: desert 3.002
+    3300244: desert 3.003
+    3300246: desert 3.004
+    3300248: desert 3.005
+    3300250: desert 3.006
+    3300252: desert 3.007
+    3300254: desert 3.008
+    3300256: desert 3.009
+    3300258: desert 3.010
+    3300260: desert 3.011
+    3300262: desert 3.012
+    3300264: desert 3.013
+    3300266: desert 3.014
+    3300268: desert 3.015
+    3300270: desert 3.016
+    3300272: desert 3.017
+    3300274: desert 3.018
+    3300276: desert 3.019
+    3300278: desert 3.020
+    3300280: desert 3.021
+    3300282: desert 3.022
+    3300284: desert 3.023
+    3300286: desert 3.024
+    3300288: desert 3.025
+    3300290: desert 3.026
+    3300292: desert 3.027
+    3300294: desert 3.028
+    3300296: "d\xE9sert002"
+    3300298: "d\xE9sert003"
+    3300300: "d\xE9sert004"
+    3300302: "d\xE9sert005"
+    3300304: "d\xE9sert006"
+    3300306: "d\xE9sert007"
+    3300308: "d\xE9sert008"
+    3300310: "d\xE9sert009"
+    3300312: "d\xE9sert01"
+    3300314: "d\xE9sert010"
+    3300316: "d\xE9sert011"
+    3300318: "d\xE9sert012"
+    3300320: "d\xE9sert013"
+    3300322: "d\xE9sert014"
+    3300324: "d\xE9sert015"
+    3300326: "d\xE9sert016"
+    3300328: "d\xE9sert017"
+    3300330: "d\xE9sert018"
+    3300332: "d\xE9sert019"
+    3300334: "d\xE9sert020"
+    3300336: "d\xE9sert021"
+    3300338: "d\xE9sert022"
+    3300340: "d\xE9sert023"
+    3300342: "d\xE9sert024"
+    3300344: "d\xE9sert025"
+    3300346: "d\xE9sert026"
+    3300348: "d\xE9sert027"
+    3300350: "d\xE9sert028"
+    3300352: "d\xE9sert029"
+    3300354: "d\xE9sert030"
+    3300356: "d\xE9sert031"
+    3300358: "d\xE9sert032"
+    3300360: "d\xE9sert033"
+    3300362: "d\xE9sert034"
+    3300364: "d\xE9sert035"
+    3300366: "d\xE9sert036"
+    3300368: "d\xE9sert037"
+    3300370: "d\xE9sert038"
+    3300372: "d\xE9sert039"
+    3300374: "d\xE9sert040"
+    3300376: "d\xE9sert041"
+    3300378: "d\xE9sert042"
+    3300380: "d\xE9sert043"
+    3300382: "d\xE9sert044"
+    3300384: "d\xE9sert045"
+    3300386: "d\xE9sert046"
+    3300388: "d\xE9sert047"
+    3300390: "d\xE9sert048"
+    3300392: "d\xE9sert049"
+    3300394: "d\xE9sert050"
+    3300396: "d\xE9sert051"
+    3300398: "d\xE9sert052"
+    3300400: "d\xE9sert053"
+    3300402: "d\xE9sert054"
+    3300404: "d\xE9sert055"
+    3300406: "d\xE9sert056"
+    3300408: "d\xE9sert057"
+    3300410: "d\xE9sert058"
+    3300412: "d\xE9sert059"
+    3300414: "d\xE9sert060"
+    3300416: "d\xE9sert061"
+    3300418: "d\xE9sert062"
+    3300420: "d\xE9sert063"
+    3300422: "d\xE9sert064"
+    3300424: "d\xE9sert065"
+    3300426: "d\xE9sert066"
+    3300428: "d\xE9sert067"
+    3300430: "d\xE9sert068"
+    3300432: "d\xE9sert069"
+    3300434: "d\xE9sert070"
+    3300436: "d\xE9sert071"
+    3300438: "d\xE9sert072"
+    3300440: "d\xE9sert073"
+    3300442: "d\xE9sert074"
+    3300444: "d\xE9sert075"
+    3300446: "d\xE9sert076"
+    3300448: "d\xE9sert077"
+    3300450: "d\xE9sert078"
+    3300452: "d\xE9sert079"
+    3300454: "d\xE9sert080"
+    3300456: "d\xE9sert081"
+    3300458: "d\xE9sert082"
+    3300460: "d\xE9sert083"
+    3300462: "d\xE9sert084"
+    3300464: "d\xE9sert085"
+    3300466: "d\xE9sert086"
+    3300468: "d\xE9sert087"
+    3300470: "d\xE9sert088"
+    3300472: "d\xE9sert089"
+    3300474: "d\xE9sert090"
+    3300476: "d\xE9sert091"
+    3300478: "d\xE9sert092"
+    3300480: "d\xE9sert093"
+    3300482: "d\xE9sert094"
+    3300484: "d\xE9sert095"
+    3300486: "d\xE9sert096"
+    3300488: "d\xE9sert097"
+    3300490: "d\xE9sert098"
+    4300000: "d\xE9sert015"
+    4300002: "d\xE9sert016"
+    4300004: "d\xE9sert017"
+    4300006: "d\xE9sert018"
+    4300008: "d\xE9sert019"
+    4300010: "d\xE9sert020"
+    4300012: "d\xE9sert021"
+    4300014: "d\xE9sert022"
+    4300016: "d\xE9sert023"
+    4300018: "d\xE9sert024"
+    4300020: "d\xE9sert025"
+    4300022: "d\xE9sert026"
+    4300024: "d\xE9sert027"
+    4300026: "d\xE9sert028"
+    4300028: "d\xE9sert029"
+    4300030: "d\xE9sert007"
+    4300032: "d\xE9sert014"
+    4300034: "d\xE9sert013"
+    4300036: "d\xE9sert012"
+    4300038: "d\xE9sert011"
+    4300040: "d\xE9sert010"
+    4300042: "d\xE9sert009"
+    4300044: "d\xE9sert008"
+    4300046: "d\xE9sert006"
+    4300048: "d\xE9sert005"
+    4300050: "d\xE9sert004"
+    4300052: "d\xE9sert003"
+    4300054: "d\xE9sert002"
+    4300056: "d\xE9sert01"
+    4300058: "d\xE9sert030"
+    4300060: "d\xE9sert031"
+    4300062: "d\xE9sert032"
+    4300064: "d\xE9sert033"
+    4300066: "d\xE9sert034"
+    4300068: "d\xE9sert035"
+    4300070: "d\xE9sert036"
+    4300072: "d\xE9sert037"
+    4300074: "d\xE9sert038"
+    4300076: "d\xE9sert039"
+    4300078: "d\xE9sert040"
+    4300080: "d\xE9sert041"
+    4300082: "d\xE9sert042"
+    4300084: "d\xE9sert043"
+    4300086: "d\xE9sert044"
+    4300088: "d\xE9sert045"
+    4300090: "d\xE9sert046"
+    4300092: "d\xE9sert047"
+    4300094: "d\xE9sert048"
+    4300096: "d\xE9sert049"
+    4300098: "d\xE9sert050"
+    4300100: "d\xE9sert051"
+    4300102: "d\xE9sert052"
+    4300104: "d\xE9sert053"
+    4300106: "d\xE9sert054"
+    4300108: "d\xE9sert055"
+    4300110: "d\xE9sert056"
+    4300112: "d\xE9sert057"
+    4300114: "d\xE9sert058"
+    4300116: "d\xE9sert059"
+    4300118: "d\xE9sert060"
+    4300120: "d\xE9sert061"
+    4300122: "d\xE9sert062"
+    4300124: "d\xE9sert063"
+    4300126: "d\xE9sert064"
+    4300128: "d\xE9sert065"
+    4300130: "d\xE9sert066"
+    4300132: "d\xE9sert067"
+    4300134: "d\xE9sert068"
+    4300136: "d\xE9sert069"
+    4300138: "d\xE9sert070"
+    4300140: "d\xE9sert071"
+    4300142: "d\xE9sert072"
+    4300144: "d\xE9sert073"
+    4300146: "d\xE9sert074"
+    4300148: "d\xE9sert075"
+    4300150: "d\xE9sert076"
+    4300152: "d\xE9sert077"
+    4300154: "d\xE9sert078"
+    4300156: "d\xE9sert079"
+    4300158: "d\xE9sert080"
+    4300160: "d\xE9sert081"
+    4300162: "d\xE9sert082"
+    4300164: "d\xE9sert083"
+    4300166: "d\xE9sert084"
+    4300168: "d\xE9sert085"
+    4300170: "d\xE9sert086"
+    4300172: "d\xE9sert087"
+    4300174: "d\xE9sert088"
+    4300176: "d\xE9sert089"
+    4300178: "d\xE9sert090"
+    4300180: "d\xE9sert091"
+    4300182: "d\xE9sert092"
+    4300184: "d\xE9sert093"
+    4300186: "d\xE9sert094"
+    4300188: "d\xE9sert095"
+    4300190: "d\xE9sert096"
+    4300192: "d\xE9sert097"
+    4300194: "d\xE9sert098"
+    4300196: desert 2.1
+    4300198: desert 2.002
+    4300200: desert 2.003
+    4300202: desert 2.004
+    4300204: desert 2.005
+    4300206: desert 2.006
+    4300208: desert 2.007
+    4300210: desert 2.008
+    4300212: desert 2.009
+    4300214: desert 2.010
+    4300216: desert 2.011
+    4300218: desert 2.012
+    4300220: desert 2.013
+    4300222: desert 2.014
+    4300224: desert 2.015
+    4300226: desert 2.016
+    4300228: desert 2.017
+    4300230: desert 2.018
+    4300232: desert 2.019
+    4300234: desert 2.020
+    4300236: desert 2.021
+    4300238: desert 2.022
+    4300240: desert 2.023
+    4300242: desert 2.024
+    4300244: desert 2.025
+    4300246: desert 2.026
+    4300248: desert 2.027
+    4300250: desert 2.028
+    4300252: desert 2.029
+    4300254: desert 2.030
+    4300256: desert 2.031
+    4300258: desert 2.032
+    4300260: desert 2.033
+    4300262: desert 2.034
+    4300264: desert 2.035
+    4300266: desert 2.036
+    4300268: desert 2.037
+    4300270: desert 2.038
+    4300272: desert 2.039
+    4300274: desert 2.040
+    4300276: desert 2.041
+    4300278: desert 2.042
+    4300280: desert 2.043
+    4300282: desert 2.044
+    4300284: desert 2.045
+    4300286: desert 2.046
+    4300288: desert 2.047
+    4300290: desert 2.048
+    4300292: desert 2.049
+    4300294: desert 2.050
+    4300296: desert 2.051
+    4300298: desert 2.052
+    4300300: desert 2.053
+    4300302: desert 2.054
+    4300304: desert 2.055
+    4300306: desert 2.056
+    4300308: desert 2.057
+    4300310: desert 2.058
+    4300312: desert 2.059
+    4300314: desert 2.060
+    4300316: desert 2.061
+    4300318: desert 2.062
+    4300320: desert 2.063
+    4300322: desert 2.064
+    4300324: desert 2.065
+    4300326: desert 2.066
+    4300328: desert 2.067
+    4300330: desert 2.068
+    4300332: desert 2.069
+    4300334: desert 2.070
+    4300336: desert 2.071
+    4300338: desert 2.072
+    4300340: desert 2.073
+    4300342: desert 2.074
+    4300344: desert 2.075
+    4300346: desert 2.076
+    4300348: desert 2.077
+    4300350: desert 2.078
+    4300352: desert 2.079
+    4300354: desert 2.080
+    4300356: desert 2.081
+    4300358: desert 2.082
+    4300360: desert 2.083
+    4300362: desert 2.084
+    4300364: desert 2.085
+    4300366: desert 2.086
+    4300368: desert 2.087
+    4300370: desert 2.088
+    4300372: desert 2.089
+    4300374: desert 2.090
+    4300376: desert 2.091
+    4300378: desert 2.092
+    4300380: desert 2.093
+    4300382: desert 2.094
+    4300384: desert 2.095
+    4300386: desert 2.096
+    4300388: desert 2.097
+    4300390: desert 2.098
+    4300392: desert 2.099
+    4300394: desert 2.100
+    4300396: desert 2.101
+    4300398: desert 2.102
+    4300400: desert 2.103
+    4300402: desert 2.104
+    4300404: desert 2.105
+    4300406: desert 2.106
+    4300408: desert 2.107
+    4300410: desert 2.108
+    4300412: desert 2.109
+    4300414: desert 2.110
+    4300416: desert 2.111
+    4300418: desert 2.112
+    4300420: desert 2.113
+    4300422: desert 2.114
+    4300424: desert 2.115
+    4300426: desert 2.116
+    4300428: desert 2.117
+    4300430: desert 2.118
+    4300432: desert 2.119
+    4300434: desert 2.120
+    4300436: desert 3.001
+    4300438: desert 3.002
+    4300440: desert 3.003
+    4300442: desert 3.004
+    4300444: desert 3.005
+    4300446: desert 3.006
+    4300448: desert 3.007
+    4300450: desert 3.008
+    4300452: desert 3.009
+    4300454: desert 3.010
+    4300456: desert 3.011
+    4300458: desert 3.012
+    4300460: desert 3.013
+    4300462: desert 3.014
+    4300464: desert 3.015
+    4300466: desert 3.016
+    4300468: desert 3.017
+    4300470: desert 3.018
+    4300472: desert 3.019
+    4300474: desert 3.020
+    4300476: desert 3.021
+    4300478: desert 3.022
+    4300480: desert 3.023
+    4300482: desert 3.024
+    4300484: desert 3.025
+    4300486: desert 3.026
+    4300488: desert 3.027
+    4300490: desert 3.028
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
