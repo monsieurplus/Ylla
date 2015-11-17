@@ -253,5 +253,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+
+		//MODIFICATION BY ANTOINE LITZLER
+		//-----------------------------------------
+		public void TeleportController(Vector3 charPos, Quaternion charRot, Quaternion cameraRot)
+		{
+			transform.position = charPos;
+			m_MouseLook.ForceRotation(transform, m_Camera.transform, charRot, cameraRot);
+		}
     }
 }

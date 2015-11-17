@@ -23,7 +23,7 @@ public class DetectInteractibles : MonoBehaviour {
         //Debug.DrawLine(cam.transform.position + cam.transform.forward, cam.transform.position + cam.transform.forward + cam.transform.forward, Color.red);
 
         
-        if (Physics.Raycast(cam.transform.position + cam.transform.forward, cam.transform.forward, out hit, 1f) ) {
+        if (Physics.Raycast(cam.transform.position + cam.transform.forward, cam.transform.forward, out hit, 2f) ) {
 
             //if ray sucessfully hits something, it can cause a reaction if it is an interactible object
 			ShineOnLookScript objectShineScript = hit.collider.GetComponent<ShineOnLookScript>();
