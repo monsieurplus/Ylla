@@ -206,7 +206,8 @@ public class UI_Scripting : MonoBehaviour {
         source.PlayOneShot(audio);
 
         //Do the subtitles actually appear? Depends if they are enabled. Check the option
-        if ( PlayerPrefs.GetInt("subtitles") == 1 ) { 
+		// TODO Use PlayerPrefs
+        if ( true || PlayerPrefs.GetInt("subtitles") == 1 ) { 
             GameObject NewSubtitleBox = Instantiate(SubtitleContainer) as GameObject;
             NewSubtitleBox.transform.SetParent(thisCanvas.transform, false );
             NewSubtitleBox.transform.position = new Vector3 (Screen.width/2 , Screen.height/6, 0);

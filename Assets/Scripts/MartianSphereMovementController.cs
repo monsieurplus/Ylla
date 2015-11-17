@@ -22,7 +22,7 @@ public class MartianSphereMovementController : MonoBehaviour {
 	void Update () {
 		// Handles moving the sphere around
 		if (isMoving()) {
-			this.moveTo(
+			moveTo(
 				movingCurveX.Evaluate(Time.time),
 				movingCurveY.Evaluate(Time.time),
 				movingCurveZ.Evaluate(Time.time)
@@ -100,7 +100,7 @@ public class MartianSphereMovementController : MonoBehaviour {
 	}
 
 	public bool isMoving() {
-		return (movingEnd >= Time.time);
+		return (movingEnd >= Time.time && movingCurveX != null);
 	}
 
 	public float getMovingEnd() {

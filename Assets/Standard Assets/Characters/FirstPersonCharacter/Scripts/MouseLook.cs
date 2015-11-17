@@ -69,17 +69,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             return q;
         }
 
-		//MODIFICATION BY ANTOINE LITZLER
-		//-----------------------------------------
-		public void ForceRotation(Transform character, Transform camera, Quaternion charRot, Quaternion cameraRot)
-		{
-			
-			m_CharacterTargetRot = charRot;
-			m_CameraTargetRot = cameraRot;
-			
-			character.localRotation = m_CharacterTargetRot;
-			camera.localRotation = m_CameraTargetRot;
-			
-		}
+        //MODIFICATION BY ANTOINE LITZLER
+        //-----------------------------------------
+        public void ForceRotation(Transform character, Transform camera, Quaternion charRot, Quaternion cameraRot)
+        {
+
+            m_CharacterTargetRot = charRot;
+            m_CameraTargetRot = cameraRot;
+
+            character.localRotation = m_CharacterTargetRot;
+            camera.localRotation = m_CameraTargetRot;
+
+        }
+
     }
 }

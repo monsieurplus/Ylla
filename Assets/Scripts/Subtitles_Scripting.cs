@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Subtitles_Scripting : MonoBehaviour {
 
@@ -8,56 +9,48 @@ public class Subtitles_Scripting : MonoBehaviour {
 
     float waitTime;
 
+	private Dictionary<string, string> captions = new Dictionary<string, string>();
+
+
 	// Use this for initialization
 	void Awake () {
 	    textField = transform.Find("Text").gameObject.GetComponent<UnityEngine.UI.Text>();
         canvRenderer = GetComponent<CanvasRenderer>();
         canvRenderer.SetAlpha(0.0f);
+
+		initCaptions ();
     }
+
+	private void initCaptions() {
+		captions["desertScene01_dialog01"] = "Enfin! Te voilà ! Je te cherche depuis une étern...";
+		captions["desertScene01_dialog02"] = "Oh. Oh non...";
+		captions["desertScene01_dialog03"] = "Non, non non non, ce n’est pas vous...";
+		captions["desertScene01_dialog04"] = "Vous lui ressemblez tellement... Mais non...";
+		captions["desertScene01_dialog05"] = "Dites quelque chose pour voir.";
+
+		captions["desertScene01_dialog06"] = "Non non non, ce n’est pas ça du tout.";
+		captions["desertScene01_dialog07"] = "Sa voix… sa voix était douce, il me faisait rire.";
+		captions["desertScene01_dialog08"] = "Rien à voir avec la vôtre, c’est le moins que l’on puisse dire.";
+		captions["desertScene01_dialog09"] = "Bon! Puisque vous n’êtes pas lui, vous ne m’êtes d’aucune utilité.";
+		captions["desertScene01_dialog10"] = "Maintenant, laissez-moi tranquille. Et bonne journée.";
+	}
 	
 	// Function to display the proper text in this subtitle box. Name of Audioclip is used as search key.
 	public void DisplaySubtitleMatchingTheSound ( AudioClip soundType ) {
 
+		Debug.Log (soundType.name);
+
         string subtitletext = "";
     
-        switch ( soundType.name )
-        {
-            case "RespawnLine_Test1":
-                subtitletext = "Roh... Tu pourrais faire attention quand même!";
-            break;
-            case "RespawnLine_Test2":
-                subtitletext = "C...c'est bon! J'ai rien vu! Continue comme avant!";
-            break;
-            case "RespawnLine_Test3":
-                subtitletext = "Et voilà, même pas mort!";
-            break;
-            case "RespawnLine_Test4":
-                subtitletext = "Et hop! Il s'est rien passé!";
-            break;
-            case "RespawnLine_Test5":
-                subtitletext = "Alala... T'es un peu neuneu, quand même.";
-            break;
-        }
+		if ( captions [soundType.name] != null) {
+			subtitletext = captions [soundType.name];
+		}
+		else {
+			subtitletext = "[MISSING CAPTION " + soundType.name + "]";
+		}
 
         if ( subtitletext != "")
         {
-            //--------------------------------------------------
-            //ONLY FOR TEST PURPOSES
-            //--------------------------------------------------
-            //Randomly make text longer...or not
-            int n = Random.Range(0, 3);
-            switch (n) {
-                case 1:
-                    subtitletext += " Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-                    break;
-                case 2:
-                    subtitletext += " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et mauris at purus porta bibendum.Nunc vel turpis scelerisque nunc fringilla ultrices. Pellentesque a tincidunt.";
-                break;   
-            }
-            //--------------------------------------------------
-            //ONLY FOR TEST PURPOSES
-            //--------------------------------------------------
-
             textField.text = subtitletext;
             waitTime = soundType.length;
             StartCoroutine("SubtitleLifeSpan");
