@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Subtitles_Scripting : MonoBehaviour {
 
@@ -8,56 +9,68 @@ public class Subtitles_Scripting : MonoBehaviour {
 
     float waitTime;
 
+	private Dictionary<string, string> captions = new Dictionary<string, string>();
+
+
 	// Use this for initialization
 	void Awake () {
 	    textField = transform.Find("Text").gameObject.GetComponent<UnityEngine.UI.Text>();
         canvRenderer = GetComponent<CanvasRenderer>();
         canvRenderer.SetAlpha(0.0f);
+
+		initCaptions ();
     }
+
+	private void initCaptions() {
+		captions["desertScene01_dialog01"] = "Enfin! Te voilà ! Je te cherche depuis une étern...";
+		captions["desertScene01_dialog02"] = "Oh. Oh non...";
+		captions["desertScene01_dialog03"] = "Non, non non non, ce n’est pas vous...";
+		captions["desertScene01_dialog04"] = "Vous lui ressemblez tellement... Mais non...";
+		captions["desertScene01_dialog05"] = "Dites quelque chose pour voir.";
+
+		captions["desertScene01_dialog06"] = "Non non non, ce n’est pas ça du tout.";
+		captions["desertScene01_dialog07"] = "Sa voix… sa voix était douce, il me faisait rire.";
+		captions["desertScene01_dialog08"] = "Rien à voir avec la vôtre, c’est le moins que l’on puisse dire.";
+		captions["desertScene01_dialog09"] = "Bon ! Puisque vous n’êtes pas lui, vous ne m’êtes d’aucune utilité.";
+		captions["desertScene01_dialog10"] = "Maintenant, laissez-moi tranquille. Et bonne journée.";
+
+		captions["desertScene02_dialog01"] = "Encore vous ?!!";
+		captions["desertScene02_dialog02"] = "Mais ça ne va pas, ça ! Ça ne va pas du tout !";
+		captions["desertScene02_dialog03"] = "C’est notre chanson à NOUS ! Elle ne devrait pas vous faire venir VOUS !";
+		captions["desertScene02_dialog04"] = "Fichez moi la paix ! Bonne journée !";
+
+		captions["desertScene03_dialog01"] = "Je ne le trouverais pas... Cela fait si longtemps que je le cherche, que j’essaie de comprendre...";
+		captions["desertScene03_dialog02"] = "Je suis pourtant certaine qu’il était ici, les images, les sons, sa voix, tout pointait vers cet endroit…. Alors pourquoi ?";
+		captions["desertScene03_dialog03"] = "Qu’a-t-il bien pu se passer ? J’ai besoin de réponses. Je tourne en rond sur cette histoire depuis si longtemps...";
+		captions["desertScene03_dialog04"] = "Oh... Vous voilà encore ?";
+		captions["desertScene03_dialog05"] = "Notre chanson semble vous attirer. Vous êtes de toute évidence de la troisième planète vous aussi... Ça ne peut pas être entièrement une coïncidence.";
+		captions["desertScene03_dialog06"] = "Suivez moi, j’ai quelque chose à vous montrer.";
+
+		captions["bridgeScene01_dialog01"] = "Vous avez pris votre temps !";
+		captions["bridgeScene01_dialog02"] = "Cela m’a permis de préparer les derniers détails. J’ai besoin de toute votre attention, suivez-moi !";
+
+		captions["bridgeScene02_dialog01"] = "Je suis à la recherche d’une personne qui m’est chère. Un homme de la Terre, tout comme vous.";
+		captions["bridgeScene02_dialog02"] = "Il y a une chose que vous devez bien comprendre : tous ces évènement ce sont passés il y a des années de cela. A l’époque où nous autres martiens étions encore pourvus de corps, de jambes, de bras... comme vous.";
+		captions["bridgeScene02_dialog03"] = "Bien du temps a passé depuis, et certains... évènements nous ont amené à chercher le moyen de nous libérer des maux physiques. Ce à quoi nous sommes finalement parvenus.";
+		captions["bridgeScene02_dialog04"] = "Nous vivons désormais sous forme de sphères incandescentes, dans les vents, les cieux et les collines.";
+		captions["bridgeScene02_dialog05"] = "Mais pour mener cette existence éthérée, le regret est un frein. Un frein qui depuis des années me retient ici. Je ne serai libre que lorsque j’aurai compris ce qui est arrivé à mon bel astronaute.";
+		captions["bridgeScene02_dialog06"] = "Comme vous l’aurez peut-être compris, je piétine dans mes recherches. Un avis extérieur ne serait pas de refus… Accepteriez-vous de m’aider ?";
+		captions["bridgeScene02_dialog07"] = "Je suis certaine que vous n’êtes pas là par hasard. Les forces de l’esprit y sont forcément pour quelque chose.";
+		captions["bridgeScene02_dialog08"] = "Voilà ce que je vous propose : si vous m’aidez à comprendre ce qui s’est passé, je vous aiderais à rentrer chez vous. En tant qu’être d'éther, je possède certaines facultés. Aidez moi, et je promets de vous aider en retour.";
+	}
 	
 	// Function to display the proper text in this subtitle box. Name of Audioclip is used as search key.
 	public void DisplaySubtitleMatchingTheSound ( AudioClip soundType ) {
-
         string subtitletext = "";
     
-        switch ( soundType.name )
-        {
-            case "RespawnLine_Test1":
-                subtitletext = "Roh... Tu pourrais faire attention quand même!";
-            break;
-            case "RespawnLine_Test2":
-                subtitletext = "C...c'est bon! J'ai rien vu! Continue comme avant!";
-            break;
-            case "RespawnLine_Test3":
-                subtitletext = "Et voilà, même pas mort!";
-            break;
-            case "RespawnLine_Test4":
-                subtitletext = "Et hop! Il s'est rien passé!";
-            break;
-            case "RespawnLine_Test5":
-                subtitletext = "Alala... T'es un peu neuneu, quand même.";
-            break;
-        }
+		if ( captions.ContainsKey(soundType.name) ) {
+			subtitletext = captions [soundType.name];
+		}
+		else {
+			subtitletext = "[MISSING CAPTION " + soundType.name + "]";
+		}
 
-        if ( subtitletext != "")
-        {
-            //--------------------------------------------------
-            //ONLY FOR TEST PURPOSES
-            //--------------------------------------------------
-            //Randomly make text longer...or not
-            int n = Random.Range(0, 3);
-            switch (n) {
-                case 1:
-                    subtitletext += " Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-                    break;
-                case 2:
-                    subtitletext += " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et mauris at purus porta bibendum.Nunc vel turpis scelerisque nunc fringilla ultrices. Pellentesque a tincidunt.";
-                break;   
-            }
-            //--------------------------------------------------
-            //ONLY FOR TEST PURPOSES
-            //--------------------------------------------------
-
+        if ( subtitletext != "" ) {
             textField.text = subtitletext;
             waitTime = soundType.length;
             StartCoroutine("SubtitleLifeSpan");

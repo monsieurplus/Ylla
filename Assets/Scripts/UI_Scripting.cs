@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -206,7 +206,9 @@ public class UI_Scripting : MonoBehaviour {
         source.PlayOneShot(audio);
 
         //Do the subtitles actually appear? Depends if they are enabled. Check the option
-        if ( PlayerPrefs.GetInt("subtitles") == 1 ) { 
+		// TODO Use PlayerPrefs
+        //if ( PlayerPrefs.GetInt("subtitles") == 1 ) { 
+		if ( true ) {
             GameObject NewSubtitleBox = Instantiate(SubtitleContainer) as GameObject;
             NewSubtitleBox.transform.SetParent(thisCanvas.transform, false );
             NewSubtitleBox.transform.position = new Vector3 (Screen.width/2 , Screen.height/6, 0);
@@ -241,7 +243,7 @@ public class UI_Scripting : MonoBehaviour {
     //--------------------------------------------------
     //ONLY FOR TEST PURPOSES
     //--------------------------------------------------
-    AudioSource loopSource;
+   /* AudioSource loopSource;
     AudioClip[] loopAudios;
 
     public void startQuickLinesLoop(AudioSource source, AudioClip[] audios )
@@ -260,7 +262,7 @@ public class UI_Scripting : MonoBehaviour {
             PlayLineWithSubtitles(loopSource, loopSource.clip);
             yield return new WaitForSeconds(1.5f);
         }
-    }
+    }*/
     //--------------------------------------------------
     //ONLY FOR TEST PURPOSES
     //--------------------------------------------------
