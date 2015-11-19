@@ -47,6 +47,14 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 	private float minDistanceSphereFromPlayer = 3.0f;
 	private float lookRotationSpeed = 5.0f;
 
+	private float fadeDuration = 1.0f;
+	private float volumeSong = 0.1f;
+	private float volumeReverb = 0.05f;
+	private float volumeAmbiant = 0.1f;
+	private AnimationCurve fadeSong;
+	private AnimationCurve fadeReverb;
+	private AnimationCurve fadeAmbiant;
+
 	public GameObject nextSceneController;
 
 	// Use this for initialization
