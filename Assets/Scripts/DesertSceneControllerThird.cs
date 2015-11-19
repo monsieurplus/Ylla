@@ -10,7 +10,11 @@ public class DesertSceneControllerThird : MonoBehaviour {
 	public Canvas guiCanvas;
 
 	public GameObject martianSphere;
-	public AudioSource martianTelepathy;
+
+	public AudioSource audioDialog;
+	public AudioSource audioSong;
+	public AudioSource audioReverb;
+	
 	private MartianSphereMovementController martianSphereMovements;
 
 	public GameObject player;
@@ -44,6 +48,12 @@ public class DesertSceneControllerThird : MonoBehaviour {
 	// Minimum distance to trigger the sphere dialog scene 
 	private float minDistanceSphereFromPlayer = 3.0f;
 	private float lookRotationSpeed = 5.0f;
+
+	private float fadeDuration = 1.0f;
+	private float volumeSong = 1.0f;
+	private float volumeReverb = 0.05f;
+	private AnimationCurve fadeSong;
+	private AnimationCurve fadeReverb;
 
 	public GameObject nextSceneController;
 
@@ -136,6 +146,44 @@ public class DesertSceneControllerThird : MonoBehaviour {
 	}
 
 	private void phaseRotateCamera() {
+		bool phaseIsOver = true;
+		
+		// Create the sound fading animations
+		if (fadeSong == null || fadeReverb == null) {
+			fadeSong = AnimationCurve.EaseInOut(Time.time, audioSong.volume, Time.time + fadeDuration, 0);
+			fadeReverb = AnimationCurve.EaseInOut (Time.time, audioReverb.volume, Time.time + fadeDuration, volumeReverb);
+		}
+		
+		// Process the fadeIn/fadeOut animation
+		audioSong.volume = fadeSong.Evaluate (Time.time);
+		audioReverb.volume = fadeReverb.Evaluate (Time.time);
+		
+		// Check if sound fading is over
+		if (audioSong.volume > 0) {
+			phaseIsOver = false;
+		}
+		
+		// Make the player look at the sphere
+		Camera camera = character.gameObject.GetComponent<Camera>();
+		
+		Quaternion lookRotation = Quaternion.LookRotation(martianSphere.transform.position - camera.transform.position);
+		camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
+		
+		// If the remaining angle is little, we change phase
+		float deltaAngle = Quaternion.Angle(camera.transform.rotation, lookRotation);
+		if (deltaAngle >= 1.0f) {
+			phaseIsOver = false;
+		}
+		
+		if (phaseIsOver) {
+			fadeSong = null;
+			fadeReverb = null;
+			currentPhase = "dialog01";
+		}
+	}
+
+	/*
+	private void phaseRotateCamera() {
 		// Make the player look at the sphere
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		
@@ -149,13 +197,51 @@ public class DesertSceneControllerThird : MonoBehaviour {
 			currentPhase = "dialog01";
 		}
 	}
+	*/
 
 	private void phaseDialogOne() {
 		// Look at the martian sphere continuously
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		camera.transform.LookAt (martianSphere.transform);
+		
+		if (!audioDialog.isPlaying) {
+			
+			if (currentMartianDialog >= 6 || currentMartianDialog >= martianDialogs.Length) {
+				// Create the sound fading animations
+				if (fadeSong == null || fadeReverb == null) {
+					fadeSong = AnimationCurve.EaseInOut(Time.time, audioSong.volume, Time.time + fadeDuration, volumeSong);
+					fadeReverb = AnimationCurve.EaseInOut (Time.time, audioReverb.volume, Time.time + fadeDuration, 0);
+				}
+				
+				audioSong.volume = fadeSong.Evaluate(Time.time);
+				audioReverb.volume = fadeReverb.Evaluate(Time.time);
+				
+				if (audioReverb.volume <= 0) {
+					// Stop current scene / Launch next Scene
+					sceneFinished = true;
+					nextSceneController.GetComponent<BridgeSceneControllerFirst>().sceneStarted = true;
+					
+					// Unlock the player's controls
+					player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+				}
+			}
+			else {
+				// Use the GUI to play a sound and display subtitles
+				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
+				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
+				
+				currentMartianDialog++;
+			}
+		}
+	}
 
-		if (!martianTelepathy.isPlaying) {
+	/*
+	private void phaseDialogOne() {
+		// Look at the martian sphere continuously
+		Camera camera = character.gameObject.GetComponent<Camera>();
+		camera.transform.LookAt (martianSphere.transform);
+
+		if (!audioDialog.isPlaying) {
 
 			if (currentMartianDialog >= 6 || currentMartianDialog >= martianDialogs.Length) {
 				// Stop current scene / Launch next Scene
@@ -168,10 +254,11 @@ public class DesertSceneControllerThird : MonoBehaviour {
 			else {
 				// Use the GUI to play a sound and display subtitles
 				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(martianTelepathy, martianDialogs[currentMartianDialog]);
+				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
 
 				currentMartianDialog++;
 			}
 		}
 	}
+	*/
 }

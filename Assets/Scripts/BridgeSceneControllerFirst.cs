@@ -10,7 +10,12 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 	public Canvas guiCanvas;
 
 	public GameObject martianSphere;
-	public AudioSource martianTelepathy;
+	
+	public AudioSource audioDialog;
+	public AudioSource audioSong;
+	public AudioSource audioReverb;
+	public AudioSource audioAmbiant;
+
 	private MartianSphereMovementController martianSphereMovements;
 
 	public GameObject player;
@@ -49,6 +54,15 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 	// Minimum distance to trigger the sphere dialog scene 
 	private float minDistanceSphereFromPlayer = 3.0f;
 	private float lookRotationSpeed = 5.0f;
+
+	private float fadeDuration = 1.0f;
+	private float volumeSong = 0.1f;
+	private float volumeReverb = 0.05f;
+	private float volumeAmbiant = 0.1f;
+	private AnimationCurve fadeSong;
+	private AnimationCurve fadeReverb;
+	private AnimationCurve fadeAmbiant;
+	private AnimationCurve fadeSpatial;
 
 	public GameObject nextSceneController;
 
@@ -141,6 +155,44 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 	}
 
 	private void phaseRotateCamera() {
+		bool phaseIsOver = true;
+		
+		// Create the sound fading animations
+		if (fadeSong == null || fadeReverb == null) {
+			fadeSong = AnimationCurve.EaseInOut(Time.time, audioSong.volume, Time.time + fadeDuration, 0);
+			fadeReverb = AnimationCurve.EaseInOut (Time.time, audioReverb.volume, Time.time + fadeDuration, volumeReverb);
+		}
+		
+		// Process the fadeIn/fadeOut animation
+		audioSong.volume = fadeSong.Evaluate (Time.time);
+		audioReverb.volume = fadeReverb.Evaluate (Time.time);
+		
+		// Check if sound fading is over
+		if (audioSong.volume > 0) {
+			phaseIsOver = false;
+		}
+		
+		// Make the player look at the sphere
+		Camera camera = character.gameObject.GetComponent<Camera>();
+		
+		Quaternion lookRotation = Quaternion.LookRotation(martianSphere.transform.position - camera.transform.position);
+		camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
+		
+		// If the remaining angle is little, we change phase
+		float deltaAngle = Quaternion.Angle(camera.transform.rotation, lookRotation);
+		if (deltaAngle >= 1.0f) {
+			phaseIsOver = false;
+		}
+		
+		if (phaseIsOver) {
+			fadeSong = null;
+			fadeReverb = null;
+			currentPhase = "dialog01";
+		}
+	}
+
+	/*
+	private void phaseRotateCamera() {
 		// Make the player look at the sphere
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		
@@ -154,13 +206,14 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 			currentPhase = "dialog01";
 		}
 	}
+	*/
 
 	private void phaseDialogOne() {
 		// Look at the martian sphere continuously
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		camera.transform.LookAt (martianSphere.transform);
 
-		if (!martianTelepathy.isPlaying) {
+		if (!audioDialog.isPlaying) {
 
 			if (currentMartianDialog >= 6 || currentMartianDialog >= martianDialogs.Length) {
 				bridge.SetActive(true);
@@ -171,7 +224,7 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 			else {
 				// Use the GUI to play a sound and display subtitles
 				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(martianTelepathy, martianDialogs[currentMartianDialog]);
+				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
 
 				currentMartianDialog++;
 			}
@@ -179,6 +232,8 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 	}
 
 	private void phaseMoveToBridge() {
+		bool phaseIsOver = true;
+
 		// Look at the martian sphere continuously
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		camera.transform.LookAt (martianSphere.transform);
@@ -189,10 +244,40 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 		if (movingAwayStart == 0.0f) {
 			martianSphereMovements.animateTo (spherePositionOnBridge, sphereMovingSpeed * 2);
 			movingAwayStart = Time.time;
+
+			phaseIsOver = false;
 		} else {
-			if ((Time.time - movingAwayStart) > movingAwayDuration) {
-				currentPhase = "showBridge";
+			if ((Time.time - movingAwayStart) <= movingAwayDuration) {
+				phaseIsOver = false;
 			}
+		}
+
+		// Create the sound fading animations
+		if (fadeSpatial == null) {
+			//fadeSong = AnimationCurve.EaseInOut(Time.time, audioSong.volume, Time.time + fadeDuration, volumeSong);
+			//fadeReverb = AnimationCurve.EaseInOut (Time.time, audioReverb.volume, Time.time + fadeDuration, 0);
+			fadeAmbiant = AnimationCurve.EaseInOut (Time.time, audioAmbiant.volume, Time.time + fadeDuration, volumeAmbiant);
+			fadeSpatial = AnimationCurve.EaseInOut (Time.time, 1, Time.time + fadeDuration, 0);
+		}
+		
+		// Process the fadeIn/fadeOut animation
+		//audioSong.volume = fadeSong.Evaluate (Time.time);
+		//audioReverb.volume = fadeReverb.Evaluate (Time.time);
+		audioAmbiant.volume = fadeAmbiant.Evaluate (Time.time);
+
+		// Process the spatialization animation
+		audioSong.spatialBlend = fadeSpatial.Evaluate (Time.time);
+		audioReverb.spatialBlend = fadeSpatial.Evaluate (Time.time);
+		audioAmbiant.spatialBlend = fadeSpatial.Evaluate (Time.time);
+		
+		// Check if sound fading is over
+		if (audioSong.spatialBlend > 0) {
+			phaseIsOver = false;
+		}
+
+		// Launch next phase
+		if (phaseIsOver) {
+			currentPhase = "showBridge";
 		}
 	}
 
@@ -223,10 +308,6 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 		// Emission transition
 		Color bridgeEmission = new Color (progress * targetEmission, progress * targetEmission, progress * targetEmission);
 		bridgeRenderer.material.SetColor ("_EmissionColor", bridgeEmission);
-
-		// TODO Music spatialization transition
-		// TODO Song spatialization transition
-		// TODO Song_reverb spatialization transition
 
 		if (progress >= 1.0f) {
 			sceneFinished = true;

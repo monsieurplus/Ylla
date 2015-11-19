@@ -108,7 +108,6 @@ public class MartianSphereMovementController : MonoBehaviour {
 	}
 
 	public void stopMoving() {
-		Debug.Log ("stopMoving");
 		movingEnd = 0.0f;
 	}
 }
