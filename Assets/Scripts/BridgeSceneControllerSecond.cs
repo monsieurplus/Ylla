@@ -40,8 +40,8 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 	// "moveToHouse"
 	private string currentPhase = "waitingForPlayerOnBridge";
 
-	private float movingAwayDuration = 3.0f;
-	private float movingAwayStart = 0.0f;
+	//private float movingAwayDuration = 3.0f;
+	//private float movingAwayStart = 0.0f;
 
 	// Minimum distance to trigger the sphere dialog scene 
 	private float minDistanceSphereFromPlayer = 3.0f;

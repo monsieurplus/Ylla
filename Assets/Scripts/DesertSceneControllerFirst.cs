@@ -47,6 +47,13 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	private float minDistanceSphereFromPlayer = 3.0f;
 	private float lookRotationSpeed = 5.0f;
 
+	private float fadeDuration = 1.0f;
+	private float volumeSong = 1.0f;
+	private float volumeReverb = 0.05f;
+	private AnimationCurve fadeSong;
+	private AnimationCurve fadeReverb;
+
+
 	public GameObject nextSceneController;
 
 	// Use this for initialization
@@ -130,8 +137,22 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	}
 
 	private void phaseRotateCamera() {
-		// TODO fadeout song
-		// TODO fadein reverb
+		bool phaseIsOver = true;
+
+		// Create the sound fading animations
+		if (fadeSong == null || fadeReverb == null) {
+			fadeSong = AnimationCurve.EaseInOut(Time.time, audioSong.volume, Time.time + fadeDuration, 0);
+			fadeReverb = AnimationCurve.EaseInOut (Time.time, audioReverb.volume, Time.time + fadeDuration, volumeReverb);
+		}
+
+		// Process the fadeIn/fadeOut animation
+		audioSong.volume = fadeSong.Evaluate (Time.time);
+		audioReverb.volume = fadeReverb.Evaluate (Time.time);
+
+		// Check if sound fading is over
+		if (audioSong.volume > 0) {
+			phaseIsOver = false;
+		}
 
 		// Make the player look at the sphere
 		Camera camera = character.gameObject.GetComponent<Camera>();
@@ -141,7 +162,13 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 
 		// If the remaining angle is little, we change phase
 		float deltaAngle = Quaternion.Angle(camera.transform.rotation, lookRotation);
-		if (deltaAngle < 1.0f) {
+		if (deltaAngle >= 1.0f) {
+			phaseIsOver = false;
+		}
+
+		if (phaseIsOver) {
+			fadeSong = null;
+			fadeReverb = null;
 			currentPhase = "dialog01";
 		}
 	}
@@ -186,12 +213,23 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 		if (!audioDialog.isPlaying) {
 			
 			if (currentMartianDialog >= 10 || currentMartianDialog >= martianDialogs.Length) {
-				// Stop current scene / Launch next Scene
-				sceneFinished = true;
-				nextSceneController.GetComponent<DesertSceneControllerSecond>().sceneStarted = true;
+				// Create the sound fading animations
+				if (fadeSong == null || fadeReverb == null) {
+					fadeSong = AnimationCurve.EaseInOut(Time.time, audioSong.volume, Time.time + fadeDuration, volumeSong);
+					fadeReverb = AnimationCurve.EaseInOut (Time.time, audioReverb.volume, Time.time + fadeDuration, 0);
+				}
 
-				// Unlock the player's controls
-				player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+				audioSong.volume = fadeSong.Evaluate(Time.time);
+				audioReverb.volume = fadeReverb.Evaluate(Time.time);
+
+				if (audioReverb.volume <= 0) {
+					// Stop current scene / Launch next Scene
+					sceneFinished = true;
+					nextSceneController.GetComponent<DesertSceneControllerSecond>().sceneStarted = true;
+					
+					// Unlock the player's controls
+					player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+				}
 			}
 			else {
 				// Use the GUI to play a sound and display subtitles
