@@ -20,7 +20,6 @@ public class DesertSceneControllerThird : MonoBehaviour {
 	public float spherePauseDuration = 1.0f;
 	
 	private Vector3[] spherePositions = new Vector3[10];
-	private Vector3 spherePositionCanyon = new Vector3 (16.42f, 1.21f, 243.17f);
 
 	private int currentPosition = 0;
 
@@ -33,7 +32,7 @@ public class DesertSceneControllerThird : MonoBehaviour {
 	private bool sceneFinished = false;
 
 	// Phases :
-	// "moveAroundUnstoppable"
+	// "moveAroundUnstoppable01"
 	// "moveAround"
 	// "rotateCamera"
 	// "dialog01"
@@ -159,8 +158,12 @@ public class DesertSceneControllerThird : MonoBehaviour {
 		if (!martianTelepathy.isPlaying) {
 
 			if (currentMartianDialog >= 6 || currentMartianDialog >= martianDialogs.Length) {
-				currentPhase = "moveToCanyon";
-				movingAwayStart = 0.0f;
+				// Stop current scene / Launch next Scene
+				sceneFinished = true;
+				nextSceneController.GetComponent<BridgeSceneControllerFirst>().sceneStarted = true;
+				
+				// Unlock the player's controls
+				player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
 			}
 			else {
 				// Use the GUI to play a sound and display subtitles
@@ -171,62 +174,4 @@ public class DesertSceneControllerThird : MonoBehaviour {
 			}
 		}
 	}
-
-	private void phaseMoveToCanyon() {
-		// Moving the sphere away from the player
-		if (movingAwayStart == 0.0f) {
-			martianSphereMovements.animateTo (spherePositionCanyon, sphereMovingSpeed * 2);
-			movingAwayStart = Time.time;
-		} else {
-			if ((Time.time - movingAwayStart) > movingAwayDuration) {
-				// Stop current scene / Launch next Scene
-				sceneFinished = true;
-				nextSceneController.GetComponent<DesertSceneControllerSecond>().sceneStarted = true;
-				
-				// Unlock the player's controls
-				player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
-			}
-		}
-	}
-
-	/*
-	// Check the distance between the sphere and the player
-	if (getDistanceFromPlayer () <= 3) {
-		martianSphereMovements.stopMoving ();
-
-		//if (cameraIsRotating == false) {
-
-			// Lock player's movements
-			player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
-			
-			// Make the player look at the sphere
-			Camera camera = character.gameObject.GetComponent<Camera>();
-
-			var rotation = Quaternion.LookRotation(martianSphere.transform.position - camera.transform.position);
-			camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, rotation, Time.deltaTime * 5.0f);
-			cameraIsRotating = true;
-
-			//var rotation = Quaternion.LookRotation(target.position - transform.position);
-			//transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
-		//}
-		//else {
-			// LookAt
-			//camera.transform.LookAt (martianSphere.transform.position);
-		//}
-		// TODO Launch Dialogue phase
-
-
-	}
-	
-	// Check that the sphere is not moving and that it has made a pause
-	else if (!martianSphereMovements.isMoving () && (Time.time - martianSphereMovements.getMovingEnd ()) > spherePauseDuration) {
-		// Moving the sphere to the next position
-		currentPosition++;
-		if (currentPosition >= spherePositions.Length) {
-			currentPosition = 0;
-		}
-		
-		martianSphereMovements.animateTo (spherePositions [currentPosition], sphereMovingSpeed);
-	}
- 	*/
 }

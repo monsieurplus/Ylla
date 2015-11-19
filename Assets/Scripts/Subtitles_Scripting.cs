@@ -45,24 +45,32 @@ public class Subtitles_Scripting : MonoBehaviour {
 		captions["desertScene03_dialog04"] = "Oh... Vous voilà encore ?";
 		captions["desertScene03_dialog05"] = "Notre chanson semble vous attirer. Vous êtes de toute évidence de la troisième planète vous aussi... Ça ne peut pas être entièrement une coïncidence.";
 		captions["desertScene03_dialog06"] = "Suivez moi, j’ai quelque chose à vous montrer.";
+
+		captions["bridgeScene01_dialog01"] = "Vous avez pris votre temps !";
+		captions["bridgeScene01_dialog02"] = "Cela m’a permis de préparer les derniers détails. J’ai besoin de toute votre attention, suivez-moi !";
+
+		captions["bridgeScene02_dialog01"] = "Je suis à la recherche d’une personne qui m’est chère. Un homme de la Terre, tout comme vous.";
+		captions["bridgeScene02_dialog02"] = "Il y a une chose que vous devez bien comprendre : tous ces évènement ce sont passés il y a des années de cela. A l’époque où nous autres martiens étions encore pourvus de corps, de jambes, de bras... comme vous.";
+		captions["bridgeScene02_dialog03"] = "Bien du temps a passé depuis, et certains... évènements nous ont amené à chercher le moyen de nous libérer des maux physiques. Ce à quoi nous sommes finalement parvenus.";
+		captions["bridgeScene02_dialog04"] = "Nous vivons désormais sous forme de sphères incandescentes, dans les vents, les cieux et les collines.";
+		captions["bridgeScene02_dialog05"] = "Mais pour mener cette existence éthérée, le regret est un frein. Un frein qui depuis des années me retient ici. Je ne serai libre que lorsque j’aurai compris ce qui est arrivé à mon bel astronaute.";
+		captions["bridgeScene02_dialog06"] = "Comme vous l’aurez peut-être compris, je piétine dans mes recherches. Un avis extérieur ne serait pas de refus… Accepteriez-vous de m’aider ?";
+		captions["bridgeScene02_dialog07"] = "Je suis certaine que vous n’êtes pas là par hasard. Les forces de l’esprit y sont forcément pour quelque chose.";
+		captions["bridgeScene02_dialog08"] = "Voilà ce que je vous propose : si vous m’aidez à comprendre ce qui s’est passé, je vous aiderais à rentrer chez vous. En tant qu’être d'éther, je possède certaines facultés. Aidez moi, et je promets de vous aider en retour.";
 	}
 	
 	// Function to display the proper text in this subtitle box. Name of Audioclip is used as search key.
 	public void DisplaySubtitleMatchingTheSound ( AudioClip soundType ) {
-
-		Debug.Log (soundType.name);
-
         string subtitletext = "";
     
-		if ( captions [soundType.name] != null) {
+		if ( captions.ContainsKey(soundType.name) ) {
 			subtitletext = captions [soundType.name];
 		}
 		else {
 			subtitletext = "[MISSING CAPTION " + soundType.name + "]";
 		}
 
-        if ( subtitletext != "")
-        {
+        if ( subtitletext != "" ) {
             textField.text = subtitletext;
             waitTime = soundType.length;
             StartCoroutine("SubtitleLifeSpan");

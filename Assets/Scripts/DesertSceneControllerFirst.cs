@@ -10,7 +10,11 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	public Canvas guiCanvas;
 
 	public GameObject martianSphere;
-	public AudioSource martianTelepathy;
+
+	public AudioSource audioDialog;
+	public AudioSource audioSong;
+	public AudioSource audioReverb;
+
 	private MartianSphereMovementController martianSphereMovements;
 
 	public GameObject player;
@@ -126,7 +130,8 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	}
 
 	private void phaseRotateCamera() {
-		// TODO fadeout spatialized sound
+		// TODO fadeout song
+		// TODO fadein reverb
 
 		// Make the player look at the sphere
 		Camera camera = character.gameObject.GetComponent<Camera>();
@@ -147,7 +152,7 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 		camera.transform.LookAt (martianSphere.transform);
 
 
-		if (!martianTelepathy.isPlaying) {
+		if (!audioDialog.isPlaying) {
 
 			if (currentMartianDialog >= 5 || currentMartianDialog >= martianDialogs.Length) {
 				currentPhase = "waitingForPlayer";
@@ -155,7 +160,7 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 			else {
 				// Use the GUI to play a sound and display subtitles
 				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(martianTelepathy, martianDialogs[currentMartianDialog]);
+				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
 
 				currentMartianDialog++;
 			}
@@ -178,7 +183,7 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 		camera.transform.LookAt (martianSphere.transform);
 		
 		
-		if (!martianTelepathy.isPlaying) {
+		if (!audioDialog.isPlaying) {
 			
 			if (currentMartianDialog >= 10 || currentMartianDialog >= martianDialogs.Length) {
 				// Stop current scene / Launch next Scene
@@ -191,7 +196,7 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 			else {
 				// Use the GUI to play a sound and display subtitles
 				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(martianTelepathy, martianDialogs[currentMartianDialog]);
+				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
 				
 				currentMartianDialog++;
 			}
