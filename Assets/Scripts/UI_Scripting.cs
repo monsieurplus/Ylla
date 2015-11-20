@@ -248,7 +248,7 @@ public class UI_Scripting : MonoBehaviour {
     }
 
     //Function to display a subtitle. It's just a data transfer.
-    public void PlayLineWithSubtitles( AudioSource source, AudioClip audio, float volume = 0.3f )
+    public void PlayLineWithSubtitles( AudioSource source, AudioClip audio, float volume = 0.1f )
     {
         source.volume = volume;
         source.PlayOneShot(audio);

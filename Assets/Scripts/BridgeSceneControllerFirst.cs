@@ -237,7 +237,7 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		camera.transform.LookAt (martianSphere.transform);
 
-		Vector3 spherePositionOnBridge = new Vector3 (-42.07f, 15.56f, 356.16f);
+		Vector3 spherePositionOnBridge = new Vector3 (-42.07f, 14.56f, 356.16f);
 
 		// Moving the sphere away from the player
 		if (movingAwayStart == 0.0f) {

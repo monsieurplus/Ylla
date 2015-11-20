@@ -24,7 +24,7 @@ public class FinalProjectorController : MonoBehaviour {
 	public char rotationAxis = 'y';
 	public float rotationStart = 0f;
 
-	public float lightIntensity = 5f;
+	public float lightIntensity = 8f;
 	public float flareBrightness = 1f;
 
 	// Specify if only one spot can be active at once

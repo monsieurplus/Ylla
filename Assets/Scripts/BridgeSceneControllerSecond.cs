@@ -30,6 +30,8 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 
 	private int currentMartianDialog = 0;
 	[SerializeField] AudioClip[] martianDialogs;
+	private float dialogPauseStart = 0f;
+	public float dialogPauseDuration = 5.0f;
 
 
 	// TODO Start methods
@@ -126,17 +128,30 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 		}
 
 		if (!audioDialog.isPlaying) {
-			
-			if (currentMartianDialog >= 8 || currentMartianDialog >= martianDialogs.Length) {
-				finishedDialog = true;
+			if (dialogPauseStart == 0.0f) {
+				dialogPauseStart = Time.time;
 			}
-			else {
-				// Use the GUI to play a sound and display subtitles
-				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
-				
-				currentMartianDialog++;
+
+			Debug.Log (dialogPauseStart);
+
+
+			if ((Time.time - dialogPauseStart) >= dialogPauseDuration) {
+				Debug.Log ("prout");
+
+				if (currentMartianDialog >= 8 || currentMartianDialog >= martianDialogs.Length) {
+					finishedDialog = true;
+				}
+				else {
+					// Use the GUI to play a sound and display subtitles
+					UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
+					uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
+
+					dialogPauseStart = 0f;
+
+					currentMartianDialog++;
+				}
 			}
+
 		}
 
 		if (finishedMoving && finishedDialog) {
