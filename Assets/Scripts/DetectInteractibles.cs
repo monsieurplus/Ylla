@@ -4,14 +4,19 @@ using System.Collections;
 public class DetectInteractibles : MonoBehaviour {
 
     [SerializeField]private Canvas refCanvas;
+    [SerializeField]private GameObject refPlayer;
+    [SerializeField]private AudioClip[] PaperSounds;
 
     Camera cam;
     ShineOnLookScript prevObjectShineScript;
     string previousColliderName = "";
 
+    AudioSource audioSrc;
+
 	// Use this for initialization
 	void Start () {
         cam = this.GetComponent <Camera> ();
+        audioSrc = refPlayer.GetComponent<AudioSource>(); ;
 	}
 	
 	// Update is called once per frame
@@ -39,11 +44,15 @@ public class DetectInteractibles : MonoBehaviour {
                 //if "Fire1" button is down, player attempts interaction with the object
                 if ( Input.GetButtonDown("Fire1") )
                 {
-                    Debug.Log("Clicked on interactible object :" + hit.collider.name);
 
                     //Depending on the tag detected on the clicked object, the behavior is different
                     if (hit.collider.tag == "PaperDocument")
                     {
+                        //Play a sound that evoques paper folding
+                        int n = Random.Range(0, PaperSounds.Length);
+                        audioSrc.clip = PaperSounds[n];
+                        audioSrc.PlayOneShot(audioSrc.clip);
+
                         UI_Scripting interfaceScript = refCanvas.GetComponent<UI_Scripting>();
                         interfaceScript.loadPaperDocument(hit.collider.name);
                     }
