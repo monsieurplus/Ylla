@@ -28,15 +28,18 @@ public class WindEmitterScript : MonoBehaviour {
     bool LoopRandomGustsOfWind = false;
     float waitTimeUntilNextRandomGust;
 
+	public bool enabled = true;
 
     // Use this for initialization
     void Awake () {
-        windGenerator = GetComponent<ParticleSystem>();
-        windGenerator.simulationSpace = ParticleSystemSimulationSpace.World;
+		if (enabled) {
+			windGenerator = GetComponent<ParticleSystem> ();
+			windGenerator.simulationSpace = ParticleSystemSimulationSpace.World;
 
-        waitTimeUntilNextRandomGust = GUST_INTERVAL + GUST_INTERVAL_SPREAD * ((Random.value * 2) - 1);
+			waitTimeUntilNextRandomGust = GUST_INTERVAL + GUST_INTERVAL_SPREAD * ((Random.value * 2) - 1);
 
-        startRandomWindGeneration(false);
+			startRandomWindGeneration (false);
+		}
     }
 	
 	//Start generating random gusts of wind. A bool allows to play the first gust immediately, or wait for first delay.
@@ -70,8 +73,11 @@ public class WindEmitterScript : MonoBehaviour {
     }
 
     //Change strength of storm. Affects particles and filter on GUI.
-    public void setStormStrength(GameObject windWall, int newStrength = 0, int maxStrength = 500)
+    public bool setStormStrength(GameObject windWall, int newStrength = 0, int maxStrength = 500)
     {
+		if (enabled) {
+			return false;
+		}
 
         //First time functiuon is called, remember which object calls
         if (frameFirstWindWall == null) { frameFirstWindWall = windWall; }
@@ -139,6 +145,7 @@ public class WindEmitterScript : MonoBehaviour {
             wallParameters = new Vector2(newStrength, maxStrength);
         }
 
+		return true;
     }
 
     //Immediately launches a random "Wind Gust" that will be witnessed by the player anywhere in the world.

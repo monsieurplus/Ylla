@@ -38,7 +38,10 @@ public class IntroCredits : MonoBehaviour {
         //ONLY FOR TEST PURPOSES
         //--------------------------------------------------
 		if (enabled) {
+			//UIscript.requestFadeToBlack( 0.01f );
 			LaunchIntroSequence ();
+		} else {
+			UIscript.requestFadeFromBlack( 0.01f, true );
 		}
         //--------------------------------------------------
         //ONLY FOR TEST PURPOSES
@@ -118,7 +121,7 @@ public class IntroCredits : MonoBehaviour {
 
 		// Launch the first scene
 		DesertSceneControllerFirst firstSceneController = firstScene.GetComponent<DesertSceneControllerFirst> ();
-		firstSceneController.enabled = true;
+		firstSceneController.sceneStarted = true;
     }
 
     //Manages the fading in or out of an object.
