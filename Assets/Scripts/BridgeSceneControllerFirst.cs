@@ -79,9 +79,9 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
-		//Debug.Log (currentPhase);
-
 		if (sceneStarted == true && sceneFinished == false) {
+			Debug.Log ("BridgeScene01 : " + currentPhase);
+
 			switch (currentPhase) {
 				case "moveAroundUnstoppable":
 					phaseMoveAroundUnstoppable();	

@@ -24,6 +24,8 @@ public class IntroCredits : MonoBehaviour {
     bool isFadeOver = false;
 
 	public bool enabled = true;
+
+	public bool launchSceneAfter = true;
 	public GameObject firstScene;
 
     // Use this for initialization
@@ -38,15 +40,20 @@ public class IntroCredits : MonoBehaviour {
         //ONLY FOR TEST PURPOSES
         //--------------------------------------------------
 		if (enabled) {
-			//UIscript.requestFadeToBlack( 0.01f );
 			LaunchIntroSequence ();
-		} else {
-			UIscript.requestFadeFromBlack( 0.01f, true );
 		}
         //--------------------------------------------------
         //ONLY FOR TEST PURPOSES
         //--------------------------------------------------
     }
+
+	void Awake () {
+		/*if (enabled) {
+			UIscript.requestFadeToBlack (0.01f);
+		} else {
+			UIscript.requestFadeFromBlack( 1.0f, true );
+		}*/
+	}
 
     //Launches the intro sequence. Did not do it in start in case more complex sync with the music is required
     public void LaunchIntroSequence()
@@ -120,8 +127,10 @@ public class IntroCredits : MonoBehaviour {
         refInterface.transform.Find("INTROGROUP").gameObject.SetActive(false);
 
 		// Launch the first scene
-		DesertSceneControllerFirst firstSceneController = firstScene.GetComponent<DesertSceneControllerFirst> ();
-		firstSceneController.sceneStarted = true;
+		if (launchSceneAfter) {
+			DesertSceneControllerFirst firstSceneController = firstScene.GetComponent<DesertSceneControllerFirst> ();
+			firstSceneController.sceneStarted = true;
+		}
     }
 
     //Manages the fading in or out of an object.

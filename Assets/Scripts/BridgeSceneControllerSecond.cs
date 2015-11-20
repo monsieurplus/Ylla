@@ -10,7 +10,12 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 	public Canvas guiCanvas;
 
 	public GameObject martianSphere;
-	public AudioSource martianTelepathy;
+
+	public AudioSource audioDialog;
+	public AudioSource audioSong;
+	public AudioSource audioReverb;
+	public AudioSource audioAmbiant;
+
 	private MartianSphereMovementController martianSphereMovements;
 
 	public GameObject player;
@@ -76,6 +81,8 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 		if (sceneStarted == true && sceneFinished == false) {
+			Debug.Log ("BridgeScene02 : " + currentPhase);
+
 			switch (currentPhase) {
 				case "waitingForPlayerOnBridge":
 						phaseWaitingForPlayerOnBridge();	
@@ -113,11 +120,12 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 			if (currentPosition >= spherePositions.Length) {
 				finishedMoving = true;
 			}
-			
-			martianSphereMovements.animateTo (spherePositions [currentPosition], sphereMovingSpeed);
+			else {
+				martianSphereMovements.animateTo (spherePositions [currentPosition], sphereMovingSpeed);
+			}
 		}
 
-		if (!martianTelepathy.isPlaying) {
+		if (!audioDialog.isPlaying) {
 			
 			if (currentMartianDialog >= 8 || currentMartianDialog >= martianDialogs.Length) {
 				finishedDialog = true;
@@ -125,7 +133,7 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 			else {
 				// Use the GUI to play a sound and display subtitles
 				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(martianTelepathy, martianDialogs[currentMartianDialog]);
+				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
 				
 				currentMartianDialog++;
 			}
@@ -181,7 +189,7 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		camera.transform.LookAt (martianSphere.transform);
 		
-		if (!martianTelepathy.isPlaying) {
+		if (!audioDialog.isPlaying) {
 			
 			if (currentMartianDialog >= 10 || currentMartianDialog >= martianDialogs.Length) {
 				currentPhase = "moveToHouse";
@@ -189,7 +197,7 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 			else {
 				// Use the GUI to play a sound and display subtitles
 				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(martianTelepathy, martianDialogs[currentMartianDialog]);
+				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
 				
 				currentMartianDialog++;
 			}

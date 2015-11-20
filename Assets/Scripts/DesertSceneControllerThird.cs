@@ -79,7 +79,7 @@ public class DesertSceneControllerThird : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
-		//Debug.Log (currentPhase);
+		Debug.Log ("DesertScene03 : " + currentPhase);
 
 		if (sceneStarted == true && sceneFinished == false) {
 			switch (currentPhase) {
