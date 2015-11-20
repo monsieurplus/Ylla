@@ -58,6 +58,9 @@ public class Subtitles_Scripting : MonoBehaviour {
 		captions["bridgeScene02_dialog07"] = "Je suis certaine que vous n’êtes pas là par hasard. Les forces de l’esprit y sont forcément pour quelque chose.";
 		captions["bridgeScene02_dialog08"] = "Voilà ce que je vous propose : si vous m’aidez à comprendre ce qui s’est passé, je vous aiderais à rentrer chez vous. En tant qu’être d'éther, je possède certaines facultés. Aidez moi, et je promets de vous aider en retour.";
 
+		captions["bridgeScene03_dialog01"] = "Nous y voilà, j’ai réuni ici tout ce dont je pouvais me souvenir des dernières heures avant la mystérieuse disparition de mon terrien bien-aimé. Nous vivions dans cette maison mon imbécile de mari et moi, à l’époque où tout cela est arrivé.";
+		captions["bridgeScene03_dialog02"] = "Je ne serais pas loin si vous avez besoin d’aide.";
+
         captions["bridgeFall_dialog01"] = "Vous devriez faire attention. Ces eaux ne sont pas très amicales pour les êtres matériels comme vous.";
         captions["bridgeFall_dialog02"] = "Évidemment vous êtes sujet à la gravité... Faites un peu attention. Je ne vais pas passer ma journée à vous repêcher!";
         captions["bridgeFall_dialog03"] = "J'espère que vous serez plus adroit pour chercher dans mes souvenirs, que vous ne l'êtes pour marcher droit!";

@@ -73,8 +73,8 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 	}
 
 	private void initializePositions() {
-		spherePositions [0]  = new Vector3 (-40.47f, 12.6f, 334.52f);
-		spherePositions [1]  = new Vector3 (-45.62f, 12.8f, 331.51f);
+		spherePositions [0]  = new Vector3 (-40.47f, 10.6f, 334.52f);
+		spherePositions [1]  = new Vector3 (-45.62f, 10.8f, 331.51f);
 	}
 
 	// Update is called once per frame
@@ -237,7 +237,7 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		camera.transform.LookAt (martianSphere.transform);
 
-		Vector3 spherePositionOnBridge = new Vector3 (-42.07f, 14.56f, 356.16f);
+		Vector3 spherePositionOnBridge = new Vector3 (-42.12f, 12.33f, 355.04f);
 
 		// Moving the sphere away from the player
 		if (movingAwayStart == 0.0f) {
@@ -308,7 +308,7 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 		Color bridgeEmission = new Color (progress * targetEmission, progress * targetEmission, progress * targetEmission);
 		bridgeRenderer.material.SetColor ("_EmissionColor", bridgeEmission);
 
-		if (progress >= 1.0f) {
+		if (progress >= 0.99f) {
 			sceneFinished = true;
 			nextSceneController.GetComponent<BridgeSceneControllerSecond>().sceneStarted = true;
 
