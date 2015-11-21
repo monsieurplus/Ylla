@@ -32,7 +32,7 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 
 
 	// TODO Start methods
-	public bool sceneStarted = true;
+	public bool sceneStarted = false;
 	private bool sceneFinished = false;
 
 	// Phases :
@@ -77,9 +77,9 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
-		//Debug.Log (currentPhase);
-
 		if (sceneStarted == true && sceneFinished == false) {
+			Debug.Log ("DesertScene01 : " + currentPhase);
+
 			switch (currentPhase) {
 				case "moveAround":
 					phaseMoveAround();	

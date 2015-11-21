@@ -9,6 +9,7 @@ public class UI_Scripting : MonoBehaviour {
     [SerializeField]private GameObject SubtitleContainer;
 
     Canvas thisCanvas;
+    UnityEngine.UI.Image tempestFader;
     UnityEngine.UI.Image blackFader;
     UnityEngine.UI.Image whiteFader;
 
@@ -22,13 +23,25 @@ public class UI_Scripting : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        //In this scene, we hide the mouse cursor
+        //Intro plays first, so it's the logical place to do it
+        Cursor.visible = false;
+
         thisCanvas = GetComponent<Canvas>();
+
+        //Initialize the tempest fader
+        tempestFader = transform.Find("TempestFader").gameObject.GetComponent<UnityEngine.UI.Image>();
+        tempestFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
+        tempestFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
+        tempestFader.canvasRenderer.SetAlpha(0f);
 
         //Initialize the black fader
         blackFader = transform.Find("BlackFader").gameObject.GetComponent<UnityEngine.UI.Image>();
         blackFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
         blackFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
-        blackFader.canvasRenderer.SetAlpha(0f);
+        blackFader.canvasRenderer.SetAlpha(1f);
+        blackFader.gameObject.SetActive(true);
 
         //Initialize the white fader
         whiteFader = transform.Find("WhiteFader").gameObject.GetComponent<UnityEngine.UI.Image>();
@@ -56,7 +69,7 @@ public class UI_Scripting : MonoBehaviour {
         paperPiece.sprite = Resources.Load(AssetName[1], typeof(Sprite)) as Sprite;
 
         //Set sprite as child of canvas interface
-        paperPiece.transform.parent = thisCanvas.transform;
+        paperPiece.transform.SetParent(thisCanvas.transform);
 
         //Read original sprite texture size
         Vector2 dimensionsImage = new Vector2(paperPiece.sprite.texture.width, paperPiece.sprite.texture.height);
@@ -145,6 +158,7 @@ public class UI_Scripting : MonoBehaviour {
     //Requests a fade to black at a given speed (in seconds)
     public void requestFadeToBlack( float seconds )
     {
+        blackFader.gameObject.SetActive(true);
         fadeTime = seconds;
         StartCoroutine("FadeToBlack");
     }
@@ -165,6 +179,37 @@ public class UI_Scripting : MonoBehaviour {
 
     }
 
+    //Requests a fade from black to normal view
+    //If it is the introduction, take this as a cue to activate the controls
+    public void requestFadeFromBlack(float seconds, bool reactivateControls = false)
+    {
+
+        if (reactivateControls)
+        {
+            //Enable normal FPS Controls
+            refPlayer.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+            refPlayer.transform.GetChild(0).GetComponent<DetectInteractibles>().enabled = true;
+        }
+        fadeTime = seconds;
+        StartCoroutine("FadeFromBlack");
+    }
+
+    //Coroutine which causes a complete fade from black (making the black fader invisible)
+    IEnumerator FadeFromBlack()
+    {
+        float f = 1.0f;
+
+        while (f > 0.0f)
+        {
+            f -= Time.deltaTime / fadeTime;
+            if (f < 0.0f) { f = 0.0f; }
+
+            blackFader.canvasRenderer.SetAlpha(f);
+            yield return null;
+        }
+
+    }
+
     //Requests a white flash from a faded black screen (used when "respawning" after a fall
     public void requestWhiteFlashFromBlack()
     {
@@ -175,6 +220,8 @@ public class UI_Scripting : MonoBehaviour {
     IEnumerator WhiteFlashFromBlack()
     {
         float f = 0.0f;
+
+        whiteFader.gameObject.SetActive(true);
 
         //Make white fader appear first
         while (f < 1.0f)
@@ -201,8 +248,9 @@ public class UI_Scripting : MonoBehaviour {
     }
 
     //Function to display a subtitle. It's just a data transfer.
-    public void PlayLineWithSubtitles( AudioSource source, AudioClip audio )
+    public void PlayLineWithSubtitles( AudioSource source, AudioClip audio, float volume = 0.1f )
     {
+        source.volume = volume;
         source.PlayOneShot(audio);
 
         //Do the subtitles actually appear? Depends if they are enabled. Check the option
@@ -239,30 +287,38 @@ public class UI_Scripting : MonoBehaviour {
         }
     }
 
+    //Manipulate the "tempest layer" to strengthen the sandstorm effect when it's necessary
+    public void changeTempestFaderOpacity(float newOpacity)
+    {
+
+        Mathf.Clamp(newOpacity, 0.0f, 1.0f);
+        tempestFader.canvasRenderer.SetAlpha(newOpacity);
+
+    }
 
     //--------------------------------------------------
     //ONLY FOR TEST PURPOSES
     //--------------------------------------------------
-   /* AudioSource loopSource;
-    AudioClip[] loopAudios;
+    /* AudioSource loopSource;
+     AudioClip[] loopAudios;
 
-    public void startQuickLinesLoop(AudioSource source, AudioClip[] audios )
-    {
-        loopSource = source;
-        loopAudios = audios;
-        StartCoroutine("PlayRandomLinesQuick");
-    }
+     public void startQuickLinesLoop(AudioSource source, AudioClip[] audios )
+     {
+         loopSource = source;
+         loopAudios = audios;
+         StartCoroutine("PlayRandomLinesQuick");
+     }
 
-    //Coroutine to play subtitled lines in quick succession. Very annoying to human ears but tests subtible system.
-    IEnumerator PlayRandomLinesQuick()
-    {
-        while (true) { 
-            int n = Random.Range(0, loopAudios.Length);
-            loopSource.clip = loopAudios[n];
-            PlayLineWithSubtitles(loopSource, loopSource.clip);
-            yield return new WaitForSeconds(1.5f);
-        }
-    }*/
+     //Coroutine to play subtitled lines in quick succession. Very annoying to human ears but tests subtible system.
+     IEnumerator PlayRandomLinesQuick()
+     {
+         while (true) { 
+             int n = Random.Range(0, loopAudios.Length);
+             loopSource.clip = loopAudios[n];
+             PlayLineWithSubtitles(loopSource, loopSource.clip);
+             yield return new WaitForSeconds(1.5f);
+         }
+     }*/
     //--------------------------------------------------
     //ONLY FOR TEST PURPOSES
     //--------------------------------------------------

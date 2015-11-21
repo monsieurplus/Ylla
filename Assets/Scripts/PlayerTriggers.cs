@@ -9,7 +9,7 @@ public class PlayerTriggers : MonoBehaviour {
     private AudioSource SoundPlayer;
     private Camera playerCamera;
 
-    [SerializeField] AudioClip[] FallYellSounds;
+    [SerializeField] AudioClip[] FallSplashSounds;
     [SerializeField] AudioClip[] YllaRespawnLines;
 
     Vector3 lastCheckPointPosition;
@@ -77,21 +77,35 @@ public class PlayerTriggers : MonoBehaviour {
     //Coroutine which manages the sequences of Events allowing the player to be saved by Ylla's space magic when falling
     IEnumerator YllaSavesYourButt()
     {
+        int n;
+
+        SoundPlayer.volume = 1.0f;
+
         //Requests screen fade to black
-        UIScript.requestFadeToBlack(1.0f);
+        UIScript.requestFadeToBlack(0.1f);
         yield return new WaitForSeconds(0.1f);
 
         //Plays sound of player character yelling from player audiosource
         //pick & play a random yell sound from the array,
         //excluding sound at index 0
-        int n = Random.Range(1, FallYellSounds.Length); 
-        SoundPlayer.clip = FallYellSounds[n]; 
-        SoundPlayer.PlayOneShot(SoundPlayer.clip); 
-        //move picked sound to index 0 so it's not picked next time
-        FallYellSounds[n] = FallYellSounds[0]; 
-        FallYellSounds[0] = SoundPlayer.clip; 
-        //Wait for a duration equal to the sounds' length
-        yield return new WaitForSeconds(SoundPlayer.clip.length + 0.5f);
+        //...if array has at least 2 elements of coourse
+        if ( FallSplashSounds.Length > 1 ) {
+
+            n = Random.Range(1, FallSplashSounds.Length);
+            SoundPlayer.clip = FallSplashSounds[n];
+            SoundPlayer.PlayOneShot(SoundPlayer.clip);
+            //move picked sound to index 0 so it's not picked next time
+            FallSplashSounds[n] = FallSplashSounds[0];
+            FallSplashSounds[0] = SoundPlayer.clip;
+
+            //Wait for a duration equal to the sounds' length
+            yield return new WaitForSeconds(SoundPlayer.clip.length + 0.5f);
+        }
+        else
+        {
+            //If not enough sounds provided, no sound and wait for a default duration
+            yield return new WaitForSeconds(1.5f);
+        }
 
         //While things are hidden, quickly teleport the player to last checkpoint
         teleportPlayer(lastCheckPointPosition, lastCheckPointRotation);

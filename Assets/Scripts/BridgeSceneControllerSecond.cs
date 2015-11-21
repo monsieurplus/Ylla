@@ -10,21 +10,28 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 	public Canvas guiCanvas;
 
 	public GameObject martianSphere;
-	public AudioSource martianTelepathy;
+
+	public AudioSource audioDialog;
+	public AudioSource audioSong;
+	public AudioSource audioReverb;
+	public AudioSource audioAmbiant;
+
 	private MartianSphereMovementController martianSphereMovements;
 
 	public GameObject player;
 	public GameObject character;
 
-	public float sphereMovingSpeed = 5.0f;
+	public float sphereMovingSpeed = 6.0f;
 	public float spherePauseDuration = 1.0f;
 	
-	private Vector3[] spherePositions = new Vector3[6];
+	private Vector3[] spherePositions = new Vector3[16];
 
 	private int currentPosition = 0;
 
 	private int currentMartianDialog = 0;
 	[SerializeField] AudioClip[] martianDialogs;
+	private float dialogPauseStart = 0f;
+	public float dialogPauseDuration = 10.0f;
 
 
 	// TODO Start methods
@@ -38,44 +45,65 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 	// "rotateCamera"
 	// "dialog01"
 	// "moveToHouse"
+	// "checkPuzzle"
+	// "ending"
 	private string currentPhase = "waitingForPlayerOnBridge";
 
-	//private float movingAwayDuration = 3.0f;
-	//private float movingAwayStart = 0.0f;
+	private float movingAwayDuration = 3.0f;
+	private float movingAwayStart = 0.0f;
 
 	// Minimum distance to trigger the sphere dialog scene 
 	private float minDistanceSphereFromPlayer = 3.0f;
 	private float lookRotationSpeed = 5.0f;
 
 	private float fadeDuration = 1.0f;
-	private float volumeSong = 0.1f;
-	private float volumeReverb = 0.05f;
+	//private float volumeSong = 0.1f;
+	//private float volumeReverb = 0.05f;
 	private float volumeAmbiant = 0.1f;
 	private AnimationCurve fadeSong;
 	private AnimationCurve fadeReverb;
 	private AnimationCurve fadeAmbiant;
 
-	public GameObject nextSceneController;
+	// Objects needed to check the puzzle
+	public GameObject projector;
+	public Renderer door;
+	private FinalProjectorController projectorController;
+	private bool puzzleCompleted = false;
+
+	public GameObject endingCube;
 
 	// Use this for initialization
-	private void Start () {
+	private void Awake () {
 		initializePositions ();
 
+		projectorController = projector.GetComponent<FinalProjectorController> ();
 		martianSphereMovements = martianSphere.GetComponent<MartianSphereMovementController> ();
 	}
 
 	private void initializePositions() {
-		spherePositions [0]  = new Vector3 (-44.89f, 18.12f, 381.77f);
-		spherePositions [1]  = new Vector3 ( -4.62f, 23.98f, 433.77f);
-		spherePositions [2]  = new Vector3 ( -4.62f, 23.98f, 502.77f);
-		spherePositions [3]  = new Vector3 (-49.55f, 10.19f, 524.28f);
-		spherePositions [4]  = new Vector3 (-34.24f, -2.50f, 558.00f);
-		spherePositions [5]  = new Vector3 (-69.00f,-80.00f, 726.20f);
+		spherePositions [0] = new Vector3 (-42.12f, 17.21f, 388.37f);
+		spherePositions [1] = new Vector3 (-42.62f, 17.7f, 413.5f);
+		spherePositions [2] = new Vector3 (-46.23f, 14.4f, 439.11f);
+		spherePositions [3] = new Vector3 (-60.9f, 8.44f, 461.1f);
+		spherePositions [4] = new Vector3 (-98.6f, -7.96f, 503.6f);
+		spherePositions [5] = new Vector3 (-98.6f, -18.36f, 535.8f);
+		spherePositions [6] = new Vector3 (-69.58f, -20.58f, 573.9f);
+		spherePositions [7] = new Vector3 (-66.3f, -1.13f, 643.5f);
+		spherePositions [8] = new Vector3 (-66.7f, -20.9f, 700f);
+		spherePositions [9] = new Vector3 (-16.45f, -19.5f, 702.8f);
+		spherePositions [10] = new Vector3 (24.6f, -7.62f, 678.8f);
+		spherePositions [11] = new Vector3 (95.5f, -29f, 704.7f);
+		spherePositions [12] = new Vector3 (97.13f, -18.6f, 751f);
+		spherePositions [13] = new Vector3 (8.24f, -34f, 773f);
+		spherePositions [14] = new Vector3 (-22.6f, -34f, 763f);
+		spherePositions [15] = new Vector3 (-160f, -50f, 800f);
 	}
 
 	// Update is called once per frame
 	void LateUpdate () {
 		if (sceneStarted == true && sceneFinished == false) {
+			Debug.Log ("BridgeScene02 : " + currentPhase);
+
 			switch (currentPhase) {
 				case "waitingForPlayerOnBridge":
 						phaseWaitingForPlayerOnBridge();	
@@ -87,6 +115,30 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 
 				case "waitingForPlayerAtHome":
 					phaseWaitingForPlayerAtHome();
+				break;
+
+				case "rotateCamera":
+					phaseRotateCamera();
+				break;
+
+				case "dialog01":
+					phaseDialogOne();
+				break;
+
+				case "moveToHouse":
+					phaseMoveToHouse ();
+				break;
+
+				case "checkPuzzle":
+					phaseCheckPuzzle();
+				break;
+
+				case "changeDoor":
+					phaseChangeDoor ();
+				break;
+
+				case "ending":
+					phaseEnding ();
 				break;
 			}
 		}
@@ -113,22 +165,34 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 			if (currentPosition >= spherePositions.Length) {
 				finishedMoving = true;
 			}
-			
-			martianSphereMovements.animateTo (spherePositions [currentPosition], sphereMovingSpeed);
+			else {
+				martianSphereMovements.animateTo (spherePositions [currentPosition], sphereMovingSpeed);
+			}
 		}
 
-		if (!martianTelepathy.isPlaying) {
-			
-			if (currentMartianDialog >= 8 || currentMartianDialog >= martianDialogs.Length) {
-				finishedDialog = true;
+		if (!audioDialog.isPlaying) {
+			if (dialogPauseStart == 0.0f) {
+				dialogPauseStart = Time.time;
 			}
-			else {
-				// Use the GUI to play a sound and display subtitles
-				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(martianTelepathy, martianDialogs[currentMartianDialog]);
-				
-				currentMartianDialog++;
+
+			Debug.Log (dialogPauseStart);
+
+
+			if ((Time.time - dialogPauseStart) >= dialogPauseDuration) {
+				if (currentMartianDialog >= 8 || currentMartianDialog >= martianDialogs.Length) {
+					finishedDialog = true;
+				}
+				else {
+					// Use the GUI to play a sound and display subtitles
+					UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
+					uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
+
+					dialogPauseStart = 0f;
+
+					currentMartianDialog++;
+				}
 			}
+
 		}
 
 		if (finishedMoving && finishedDialog) {
@@ -181,7 +245,7 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 		Camera camera = character.gameObject.GetComponent<Camera>();
 		camera.transform.LookAt (martianSphere.transform);
 		
-		if (!martianTelepathy.isPlaying) {
+		if (!audioDialog.isPlaying) {
 			
 			if (currentMartianDialog >= 10 || currentMartianDialog >= martianDialogs.Length) {
 				currentPhase = "moveToHouse";
@@ -189,7 +253,7 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 			else {
 				// Use the GUI to play a sound and display subtitles
 				UI_Scripting uiScripting = guiCanvas.GetComponent<UI_Scripting>();
-				uiScripting.PlayLineWithSubtitles(martianTelepathy, martianDialogs[currentMartianDialog]);
+				uiScripting.PlayLineWithSubtitles(audioDialog, martianDialogs[currentMartianDialog]);
 				
 				currentMartianDialog++;
 			}
@@ -197,10 +261,58 @@ public class BridgeSceneControllerSecond : MonoBehaviour {
 	}
 
 	private void phaseMoveToHouse() {
+		// Look at the martian sphere continuously
+		Camera camera = character.gameObject.GetComponent<Camera>();
+		camera.transform.LookAt (martianSphere.transform);
+		
+		Vector3 spherePositionOnBridge = new Vector3 (-205f, -50f, 818f);
+		
+		// Moving the sphere away from the player
+		if (movingAwayStart == 0.0f) {
+			martianSphereMovements.animateTo (spherePositionOnBridge, sphereMovingSpeed * 2);
+			movingAwayStart = Time.time;
+		} else {
+			if ((Time.time - movingAwayStart) <= movingAwayDuration) {
+				// Lock player's movements
+				player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
 
+				currentPhase = "checkPuzzle";
+			}
+		}
 	}
 
+	private void phaseCheckPuzzle() {
+		if (checkPuzzleCompletion ()) {
+			currentPhase = "changeDoor";
+		}
+	}
 
+	private bool checkPuzzleCompletion() {
+		if (projectorController.getCurrentRotation () != 225) {
+			return false;
+		}
+		if (!projectorController.isLightActive ("red")) {
+			return false;
+		}
+		if (!projectorController.isLightActive ("green")) {
+			return false;
+		}
+		if (!projectorController.isLightActive ("blue")) {
+			return false;
+		}
+		
+		return true;
+	}
+
+	private void phaseChangeDoor() {
+		door.material.color = new Color (0f, 0f, 0f);
+
+		currentPhase = "ending";
+	}
+
+	private void phaseEnding() {
+		endingCube.SetActive (true);
+	}
 
 	/*
 	private void phaseMoveAroundUnstoppable() {

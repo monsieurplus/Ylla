@@ -3,32 +3,33 @@ using System.Collections;
 
 public class ShineOnLookScript : MonoBehaviour {
 
-    private MeshRenderer renderer;
+    //private MeshRenderer Mrenderer;
     private Color startColor;
     private bool isShining = false;
 
+	public Color shiningColor = Color.yellow;
+
 	// Use this for initialization
 	void Awake () {
-        renderer = GetComponent<MeshRenderer>();
-        startColor = renderer.material.color;   
+		//startColor = GetComponent<Renderer> ().material.color;
     }
 
     //Activate "shine" effect 
     public void ActivateShine()
     {
-        if (!isShining) {
-            renderer.material.color = new Color(1f,1f,0f,1f);
-            isShining = true;
-        }
+		if (!isShining) {
+			startColor = GetComponent<Renderer> ().material.color;
+			GetComponent<Renderer>().material.color = shiningColor;
+			isShining = true;
+		}
     }
 
     //Deactivate "Shine" effect
     public void DeactivateShine()
     {
-        if (isShining)
-        {
-            renderer.material.color = startColor;
-            isShining = false;
-        }
+		if (isShining) {
+			GetComponent<Renderer>().material.color = startColor;
+			isShining = false;
+		}
     }
 }

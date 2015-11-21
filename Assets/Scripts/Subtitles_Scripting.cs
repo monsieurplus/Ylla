@@ -39,7 +39,7 @@ public class Subtitles_Scripting : MonoBehaviour {
 		captions["desertScene02_dialog03"] = "C’est notre chanson à NOUS ! Elle ne devrait pas vous faire venir VOUS !";
 		captions["desertScene02_dialog04"] = "Fichez moi la paix ! Bonne journée !";
 
-		captions["desertScene03_dialog01"] = "Je ne le trouverais pas... Cela fait si longtemps que je le cherche, que j’essaie de comprendre...";
+		captions["desertScene03_dialog01"] = "Je ne le trouverai pas... Cela fait si longtemps que je le cherche, que j’essaie de comprendre...";
 		captions["desertScene03_dialog02"] = "Je suis pourtant certaine qu’il était ici, les images, les sons, sa voix, tout pointait vers cet endroit…. Alors pourquoi ?";
 		captions["desertScene03_dialog03"] = "Qu’a-t-il bien pu se passer ? J’ai besoin de réponses. Je tourne en rond sur cette histoire depuis si longtemps...";
 		captions["desertScene03_dialog04"] = "Oh... Vous voilà encore ?";
@@ -57,7 +57,15 @@ public class Subtitles_Scripting : MonoBehaviour {
 		captions["bridgeScene02_dialog06"] = "Comme vous l’aurez peut-être compris, je piétine dans mes recherches. Un avis extérieur ne serait pas de refus… Accepteriez-vous de m’aider ?";
 		captions["bridgeScene02_dialog07"] = "Je suis certaine que vous n’êtes pas là par hasard. Les forces de l’esprit y sont forcément pour quelque chose.";
 		captions["bridgeScene02_dialog08"] = "Voilà ce que je vous propose : si vous m’aidez à comprendre ce qui s’est passé, je vous aiderais à rentrer chez vous. En tant qu’être d'éther, je possède certaines facultés. Aidez moi, et je promets de vous aider en retour.";
-	}
+
+		captions["bridgeScene03_dialog01"] = "Nous y voilà, j’ai réuni ici tout ce dont je pouvais me souvenir des dernières heures avant la mystérieuse disparition de mon terrien bien-aimé. Nous vivions dans cette maison mon imbécile de mari et moi, à l’époque où tout cela est arrivé.";
+		captions["bridgeScene03_dialog02"] = "Je ne serais pas loin si vous avez besoin d’aide.";
+
+        captions["bridgeFall_dialog01"] = "Vous devriez faire attention. Ces eaux ne sont pas très amicales pour les êtres matériels comme vous.";
+        captions["bridgeFall_dialog02"] = "Évidemment vous êtes sujet à la gravité... Faites un peu attention. Je ne vais pas passer ma journée à vous repêcher!";
+        captions["bridgeFall_dialog03"] = "J'espère que vous serez plus adroit pour chercher dans mes souvenirs, que vous ne l'êtes pour marcher droit!";
+        captions["bridgeFall_dialog04"] = "Mon mari aussi était maladroit. Évidemment maintenant qu'il flotte au dessus du sol, cela se voit beaucoup moins.";
+    }
 	
 	// Function to display the proper text in this subtitle box. Name of Audioclip is used as search key.
 	public void DisplaySubtitleMatchingTheSound ( AudioClip soundType ) {
