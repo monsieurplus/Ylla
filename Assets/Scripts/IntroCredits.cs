@@ -42,17 +42,25 @@ public class IntroCredits : MonoBehaviour {
 		if (enabled) {
 			LaunchIntroSequence ();
 		}
+
+		if (enabled) {
+			UIscript.requestFadeToBlack (0.01f);
+		} else {
+			UIscript.requestFadeFromBlack( 1.0f, true );
+		}
         //--------------------------------------------------
         //ONLY FOR TEST PURPOSES
         //--------------------------------------------------
     }
 
 	void Awake () {
-		/*if (enabled) {
+		/*
+		if (enabled) {
 			UIscript.requestFadeToBlack (0.01f);
 		} else {
 			UIscript.requestFadeFromBlack( 1.0f, true );
-		}*/
+		}
+		*/
 	}
 
     //Launches the intro sequence. Did not do it in start in case more complex sync with the music is required

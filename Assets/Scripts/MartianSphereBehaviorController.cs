@@ -59,11 +59,14 @@ public class MartianSphereBehaviorController : MonoBehaviour {
 	 * Hides the flare when it's hidden behind an obstacle
 	 */
 	void UpdateFlareSizeFromDistanceAndObstacles () {
+		// Get the main Camera
+		Vector3 cameraPosition =  Camera.main.transform.position;
+
 		// Get distance between the object and the camera
-		float distance = Vector3.Distance (transform.position, Camera.main.transform.position);
+		float distance = Vector3.Distance (transform.position, cameraPosition);
 
 		// Checks if the flare's hidden behind an object
-		Vector3 heading = Camera.main.transform.position - transform.position;
+		Vector3 heading = cameraPosition - transform.position;
 
 		bool obstacleDetected = Physics.Raycast(
 			transform.position,

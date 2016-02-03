@@ -5,6 +5,8 @@ public class PlayerTriggers : MonoBehaviour {
 
     [SerializeField] private Canvas UI;
 
+	public bool enabled;
+
     private UI_Scripting UIScript;
     private AudioSource SoundPlayer;
     private Camera playerCamera;
@@ -34,24 +36,23 @@ public class PlayerTriggers : MonoBehaviour {
 
     // Update is called once per frame
     void OnTriggerEnter (Collider triggerCollider) {
-	    
-        //Test type of the trigger, first by tag, then mby name if necessary.
-        //We probably will have lots of trigger types in the final code, so I am using "switch" and not "if"
-        switch ( triggerCollider.tag )
-        {
-            //In case of a trigger to detect falling out of bounds
-            case "FallHitbox":
-                //A coroutine handles the "death by fall" event, it's easier to fine tune the real time aspect
-                StartCoroutine("YllaSavesYourButt");
-            break;
+		if (enabled == true) {	    
+			//Test type of the trigger, first by tag, then mby name if necessary.
+			//We probably will have lots of trigger types in the final code, so I am using "switch" and not "if"
+			switch (triggerCollider.tag) {
+				//In case of a trigger to detect falling out of bounds
+				case "FallHitbox":
+	                //A coroutine handles the "death by fall" event, it's easier to fine tune the real time aspect
+					StartCoroutine ("YllaSavesYourButt");
+					break;
 
-            //In case of a trigger to detect falling out of bounds
-            case "CheckPoint":
-                //Starts the function to save position and rotation of checkpoint
-                SaveCheckPointCoordinates( triggerCollider );
-            break;
-        }
-
+				//In case of a trigger to detect falling out of bounds
+				case "CheckPoint":
+	                //Starts the function to save position and rotation of checkpoint
+					SaveCheckPointCoordinates (triggerCollider);
+					break;
+			}
+		}
 	}
 
     //Function to save the coordinates of the last collided checkpoint. The position and rotation of the checkpoint collider are used.

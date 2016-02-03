@@ -26,7 +26,7 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 	
 	private Vector3[] spherePositions = new Vector3[2];
 
-	private int currentPosition = 0;
+	//private int currentPosition = 0;
 
 	private int currentMartianDialog = 0;
 	[SerializeField] AudioClip[] martianDialogs;
@@ -80,7 +80,7 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 		if (sceneStarted == true && sceneFinished == false) {
-			Debug.Log ("BridgeScene01 : " + currentPhase);
+			//Debug.Log ("BridgeScene01 : " + currentPhase);
 
 			switch (currentPhase) {
 				case "moveAroundUnstoppable":
@@ -123,7 +123,7 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 
 	private void phaseMoveAround() {
 		// Give the sphere a destination regulary
-		if (!martianSphereMovements.isMoving () && (Time.time - martianSphereMovements.getMovingEnd ()) > spherePauseDuration) {
+		/*if (!martianSphereMovements.isMoving () && (Time.time - martianSphereMovements.getMovingEnd ()) > spherePauseDuration) {
 			// Moving the sphere to the next position
 			currentPosition++;
 			if (currentPosition >= spherePositions.Length) {
@@ -131,7 +131,7 @@ public class BridgeSceneControllerFirst : MonoBehaviour {
 			}
 			
 			martianSphereMovements.animateTo (spherePositions [currentPosition], sphereMovingSpeed);
-		}
+		}*/
 
 		// Check the distance between the sphere and the player 
 		if (getSphereDistanceFromPlayer () <= minDistanceSphereFromPlayer) {

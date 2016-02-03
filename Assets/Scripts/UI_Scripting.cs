@@ -22,14 +22,40 @@ public class UI_Scripting : MonoBehaviour {
     float fadeTime;
 
     // Use this for initialization
-    void Start () {
+	void Awake () {
+		//In this scene, we hide the mouse cursor
+		//Intro plays first, so it's the logical place to do it
+		Cursor.visible = false;
 
-        //In this scene, we hide the mouse cursor
-        //Intro plays first, so it's the logical place to do it
-        Cursor.visible = false;
+		thisCanvas = GetComponent<Canvas>();
 
-        thisCanvas = GetComponent<Canvas>();
+		//Initialize the tempest fader
+		tempestFader = transform.Find("TempestFader").gameObject.GetComponent<UnityEngine.UI.Image>();
+		tempestFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
+		tempestFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
+		tempestFader.canvasRenderer.SetAlpha(0f);
 
+		//Initialize the black fader
+		blackFader = transform.Find("BlackFader").gameObject.GetComponent<UnityEngine.UI.Image>();
+		blackFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
+		blackFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
+		blackFader.canvasRenderer.SetAlpha(0f);
+		// blackFader.gameObject.SetActive(true);
+
+		//Initialize the white fader
+		whiteFader = transform.Find("WhiteFader").gameObject.GetComponent<UnityEngine.UI.Image>();
+		whiteFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
+		whiteFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
+		whiteFader.canvasRenderer.SetAlpha(0f);
+	}
+
+	void Start () {
+		/*
+		//In this scene, we hide the mouse cursor
+		//Intro plays first, so it's the logical place to do it
+		Cursor.visible = false;
+
+		thisCanvas = GetComponent<Canvas>();
         //Initialize the tempest fader
         tempestFader = transform.Find("TempestFader").gameObject.GetComponent<UnityEngine.UI.Image>();
         tempestFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
@@ -40,15 +66,15 @@ public class UI_Scripting : MonoBehaviour {
         blackFader = transform.Find("BlackFader").gameObject.GetComponent<UnityEngine.UI.Image>();
         blackFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
         blackFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
-        blackFader.canvasRenderer.SetAlpha(1f);
-        blackFader.gameObject.SetActive(true);
+        blackFader.canvasRenderer.SetAlpha(0f);
+       // blackFader.gameObject.SetActive(true);
 
         //Initialize the white fader
         whiteFader = transform.Find("WhiteFader").gameObject.GetComponent<UnityEngine.UI.Image>();
         whiteFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
         whiteFader.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
         whiteFader.canvasRenderer.SetAlpha(0f);
-
+		*/
     }
 
     // Loads a sprite from Asset list
@@ -248,7 +274,7 @@ public class UI_Scripting : MonoBehaviour {
     }
 
     //Function to display a subtitle. It's just a data transfer.
-    public void PlayLineWithSubtitles( AudioSource source, AudioClip audio, float volume = 0.1f )
+    public void PlayLineWithSubtitles( AudioSource source, AudioClip audio, float volume = 0.5f )
     {
         source.volume = volume;
         source.PlayOneShot(audio);

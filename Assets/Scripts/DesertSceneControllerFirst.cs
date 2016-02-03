@@ -49,7 +49,7 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 
 	private float fadeDuration = 1.0f;
 	private float volumeSong = 1.0f;
-	private float volumeReverb = 0.05f;
+	private float volumeReverb = 0.5f;
 	private AnimationCurve fadeSong;
 	private AnimationCurve fadeReverb;
 
@@ -78,7 +78,7 @@ public class DesertSceneControllerFirst : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 		if (sceneStarted == true && sceneFinished == false) {
-			Debug.Log ("DesertScene01 : " + currentPhase);
+			//Debug.Log ("DesertScene01 : " + currentPhase);
 
 			switch (currentPhase) {
 				case "moveAround":

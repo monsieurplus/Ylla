@@ -80,7 +80,7 @@ public class DesertSceneControllerThird : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 		if (sceneStarted == true && sceneFinished == false) {
-			Debug.Log ("DesertScene03 : " + currentPhase);
+			//Debug.Log ("DesertScene03 : " + currentPhase);
 
 			switch (currentPhase) {
 				case "moveAroundUnstoppable":

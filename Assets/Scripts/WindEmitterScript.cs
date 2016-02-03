@@ -114,7 +114,7 @@ public class WindEmitterScript : MonoBehaviour {
              
             windGenerator.transform.position += wallMove * windGenerator.transform.right;
 
-            windGenerator.emissionRate = (wallParameters.x / 2) + wallParameters.x * Mathf.Abs(Mathf.Cos(angleRad)) / 2;
+            //windGenerator.emissionRate = (wallParameters.x / 2) + wallParameters.x * Mathf.Abs(Mathf.Cos(angleRad)) / 2;
 
             //In case of a "wind wall", an extra effect rakes the screen turn red. Effect is stronger when looking directly at the storm.
             if (wallProperties.causesStormFader)

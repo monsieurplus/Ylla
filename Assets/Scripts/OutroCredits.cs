@@ -82,7 +82,7 @@ public class OutroCredits : MonoBehaviour
 
         //Bring us back to the menu scene
         Application.LoadLevel("MainMenu");
-
+		//SceneManager.LoadScene("MainMenu");
     }
 
     //Manages the fading in or out of an object.

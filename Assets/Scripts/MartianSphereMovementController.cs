@@ -99,6 +99,10 @@ public class MartianSphereMovementController : MonoBehaviour {
 		transform.position = destination;
 	}
 
+	public void moveTo (Vector3 destination) {
+		moveTo (destination.x, destination.y, destination.z);
+	}
+
 	public bool isMoving() {
 		return (movingEnd >= Time.time && movingCurveX != null);
 	}
